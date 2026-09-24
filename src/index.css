@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 210 100% 66%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 12 60% 50%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border selection:bg-primary/20 selection:text-white;
+  }
+
+  html {
+    scroll-behavior: auto;
+    overflow-x: hidden;
+    scrollbar-color: hsl(var(--primary)) hsl(var(--secondary));
+    scrollbar-width: thin;
+     font-family: "Manrope", sans-serif;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-secondary/20;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-primary/50 hover:bg-primary/70 transition-colors;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply backdrop-blur-xl bg-white/5 border border-white/10 shadow-custom;
+  }
+
+  .glass-card {
+    @apply backdrop-blur-lg bg-secondary/30 border border-white/10 rounded-2xl shadow-xl;
+  }
+
+  .neo-blur {
+    @apply backdrop-blur-2xl bg-black/40 border border-white/10;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-br from-white via-white/90 to-white/70 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-primary {
+    @apply bg-gradient-to-br from-primary via-primary/90 to-primary/80 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-accent {
+    @apply bg-gradient-to-br from-accent via-accent/90 to-accent/80 bg-clip-text text-transparent;
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  .btn-primary {
+    @apply glass px-6 py-3 rounded-full bg-primary/20 hover:bg-primary/30 text-white font-medium transition-all duration-300 shadow-custom-primary;
+  }
+
+  .btn-secondary {
+    @apply glass px-6 py-3 rounded-full bg-secondary/50 hover:bg-secondary/70 text-white font-medium transition-all duration-300;
+  }
+
+  .btn-accent {
+    @apply glass px-6 py-3 rounded-full bg-accent/20 hover:bg-accent/30 text-white font-medium transition-all duration-300 shadow-custom-accent;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24;
+  }
+
+  .chip {
+    @apply inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/20 text-white;
+  }
+
+  .skill-bar-bg {
+    @apply h-2 bg-secondary rounded-full overflow-hidden;
+  }
+
+  .skill-bar-fill {
+    @apply h-full bg-gradient-to-r from-primary to-accent rounded-full;
+  }
+
+  .shimmer {
+    @apply bg-gradient-to-r from-transparent via-white/10 to-transparent bg-[length:200%_100%] animate-shimmer;
+  }
+}
+
+@layer utilities {
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  .text-shadow {
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .bg-dual-gradient-primary {
+    background: linear-gradient(
+      180deg,
+      hsl(var(--primary) / 0.15) 0%,
+      hsl(var(--secondary) / 0.6) 50%,
+      hsl(var(--background)) 100%
+    );
+  }
+
+  .shadow-custom {
+    box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.3);
+  }
+
+  .shadow-custom-primary {
+    box-shadow: 0 0 15px rgba(66, 153, 225, 0.5); /* Adjust to match --primary color */
+  }
+
+  .shadow-custom-accent {
+    box-shadow: 0 0 15px rgba(255, 100, 70, 0.5); /* Adjust to match --accent color */
+  }
+}
+
+.robot-3d {
+  position: absolute;
+  top: 0;
+  right: -20%;
+  margin-bottom: 5%;
+  box-shadow: blue;
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 1rem 0.5rem;
+  }
+
+  nav {
+    display: flex;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .robot-3d {
+    scale: 0.5;
+    right: -50%;
+    top: -25%;
+    z-index: -50;
+    width: 0;
+    background-color: #00000;
+  }
+}
+
+/* index.css (import this in index.js before your app) */
+
+/* Ensure the root and body take full height so snap works reliably */
+html, body, #root {
+  height: 100%;
+  font-family: "Stack Sans Notch", sans-serif;
+   
+}
+
+/* Container that holds the full-page sections */
+
+
+/* Each section must be a snap point */
+
+
+/* Optional — make the scrolling feel a bit slower / nicer on some browsers */
+.fullpage-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.fullpage-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+  border-radius: 999px;
+}
+
+/* Vertical text */
+.writing-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* Smooth infinite vertical scroll */
+@keyframes verticalScroll {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-vertical-scroll {
+  display: flex;
+  flex-direction: column;
+  animation: verticalScroll 20s linear infinite;
+}
+
+body { overflow-x: hidden; }
+
+
+* {
+  cursor: auto;
+}
