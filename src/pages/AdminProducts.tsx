@@ -132,7 +132,7 @@ export default function AdminProducts() {
     }
   };
 
-  // NEW: Toggle Availability Function
+  // Toggle Availability Function
   const handleToggleAvailability = async (id: string, currentStatus: boolean) => {
     const newStatus = currentStatus === false ? true : false;
     const { error } = await supabase.from('products').update({ is_available: newStatus }).eq('id', id);
@@ -148,15 +148,15 @@ export default function AdminProducts() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 text-black p-8 font-sans">
+    <div className="min-h-screen bg-gray-50 text-black p-4 sm:p-8 font-sans">
       <div className="max-w-5xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">Admin: Manage Products</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">Admin: Manage Products</h1>
 
-        <form id="product-form" onSubmit={handleAddProduct} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 mb-10 space-y-8">
+        <form id="product-form" onSubmit={handleAddProduct} className="bg-white p-5 sm:p-8 rounded-2xl shadow-sm border border-gray-100 mb-8 sm:mb-10 space-y-8">
           
           {/* Section 1: Basic Info */}
           <div>
-            <h2 className="text-xl font-semibold mb-4 border-b pb-2">1. Basic Details</h2>
+            <h2 className="text-lg sm:text-xl font-semibold mb-4 border-b pb-2">1. Basic Details</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <input type="text" name="name" required value={formData.name} onChange={handleChange} placeholder="Product Name" className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-black outline-none" />
               <input type="number" step="0.01" name="price" required value={formData.price} onChange={handleChange} placeholder="Price ($)" className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-black outline-none" />
@@ -169,7 +169,7 @@ export default function AdminProducts() {
 
           {/* Section 2: Images */}
           <div>
-            <h2 className="text-xl font-semibold mb-4 border-b pb-2">2. Product Images</h2>
+            <h2 className="text-lg sm:text-xl font-semibold mb-4 border-b pb-2">2. Product Images</h2>
             <p className="text-sm text-gray-500 mb-6">Choose to either upload a file from your PC <b>OR</b> paste a direct image URL.</p>
             
             <div className="mb-6 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
@@ -185,7 +185,7 @@ export default function AdminProducts() {
               <label className="block text-sm font-bold text-gray-900 mb-3">Gallery Images (Optional - up to 4)</label>
               <div className="space-y-4">
                 {[0, 1, 2, 3].map((index) => (
-                  <div key={index} className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center bg-gray-50 p-3 rounded-lg border border-gray-200">
+                  <div key={index} className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center bg-gray-50 p-3 sm:p-4 rounded-lg border border-gray-200">
                     <input type="file" accept="image/*" onChange={(e) => handleGalleryFileChange(index, e)} className="w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-gray-200 file:text-black hover:file:bg-gray-300" />
                     <input type="url" value={formData.gallery_urls[index]} onChange={(e) => handleGalleryUrlChange(index, e.target.value)} placeholder={`Gallery URL ${index + 1}`} disabled={!!galleryFiles[index]} className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-black outline-none text-sm disabled:opacity-50 disabled:bg-gray-100" />
                   </div>
@@ -194,40 +194,42 @@ export default function AdminProducts() {
             </div>
           </div>
 
-          <div className="pt-4 flex items-center gap-4">
-            <button type="submit" disabled={loading} className="w-full md:w-auto bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition disabled:opacity-50">
+          <div className="pt-4 flex flex-col sm:flex-row items-center gap-4">
+            <button type="submit" disabled={loading} className="w-full sm:w-auto bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition disabled:opacity-50">
               {loading ? 'Processing...' : '+ Add Product to Store'}
             </button>
             {loading && <span className="text-sm font-medium text-blue-600 animate-pulse">{uploadStatus}</span>}
           </div>
         </form>
 
-        {/* PRODUCT LIST TO DELETE & TOGGLE AVAILABILITY */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-          <h2 className="text-xl font-semibold mb-4 border-b pb-2">Current Products</h2>
+        {/* PRODUCT LIST */}
+        <div className="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-100">
+          <h2 className="text-lg sm:text-xl font-semibold mb-4 border-b pb-2">Current Products</h2>
           <div className="space-y-4">
             {products.map(product => (
-              <div key={product.id} className="flex items-center justify-between p-4 border rounded-xl hover:bg-gray-50 transition">
-                <div className="flex items-center gap-4">
-                  <img src={product.image_url} alt={product.name} className="w-16 h-16 rounded-lg object-cover border" />
-                  <div>
-                    <h3 className="font-bold text-gray-900">{product.name}</h3>
+              <div key={product.id} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 border rounded-xl hover:bg-gray-50 transition gap-4">
+                
+                {/* Product Info */}
+                <div className="flex items-start sm:items-center gap-4 w-full overflow-hidden">
+                  <img src={product.image_url} alt={product.name} className="w-16 h-16 rounded-lg object-cover border flex-shrink-0" />
+                  <div className="min-w-0 flex-1">
+                    <h3 className="font-bold text-gray-900 truncate">{product.name}</h3>
                     <p className="text-sm text-gray-500">${product.price}</p>
-                    <p className="text-xs text-blue-500 mt-1 truncate max-w-xs hover:text-clip">
+                    <p className="text-xs text-blue-500 mt-1 truncate hover:text-clip">
                       Link: {product.amazon_link || "None"}
                     </p>
                   </div>
                 </div>
                 
                 {/* Actions: Toggle Stock and Delete */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto pt-2 sm:pt-0 border-t sm:border-t-0 border-gray-100">
                   <button 
                     onClick={() => handleToggleAvailability(product.id, product.is_available)} 
-                    className={`px-4 py-2 rounded-lg text-sm font-semibold transition ${product.is_available !== false ? 'bg-green-100 text-green-700 hover:bg-green-200' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
+                    className={`flex-1 sm:flex-none px-4 py-2 rounded-lg text-sm font-semibold transition text-center ${product.is_available !== false ? 'bg-green-100 text-green-700 hover:bg-green-200' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
                   >
                     {product.is_available !== false ? 'In Stock' : 'Out of Stock'}
                   </button>
-                  <button onClick={() => handleDelete(product.id)} className="text-red-600 bg-red-50 hover:bg-red-100 px-4 py-2 rounded-lg text-sm font-semibold transition">
+                  <button onClick={() => handleDelete(product.id)} className="flex-1 sm:flex-none text-red-600 bg-red-50 hover:bg-red-100 px-4 py-2 rounded-lg text-sm font-semibold transition text-center">
                     Delete
                   </button>
                 </div>
