@@ -16,7 +16,7 @@ const Navbar = ({ onScrollTo = () => { } }) => {
     { label: "Home", id: "home", href: "/" },
     { label: "Services", id: "services", href: "/ServicesSection" },
     { label: "About Us", id: "about", href: "/AboutPage" },
-    { label: "Portfolio", id: "portfolio", href: "/Portfolio" },
+    { label: "Portfolio", id: "Products", href: "/Products" },
     { label: "Career", id: "reviews", href: "/Career" },
     { label: "Contact Us", id: "contact", href: "/Contact" },
   ];
