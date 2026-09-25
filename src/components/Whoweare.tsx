@@ -41,7 +41,7 @@ export default function AboutSection() {
         <div className="bg-white/5 backdrop-blur-md p-6 rounded-xl max-w-sm ml-auto">
           <h3 className="text-white font-semibold mb-2">WHO WE ARE ?</h3>
           <p className="text-gray-300 text-sm">
-            AE Techno Services is a technology solutions company providing reliable electronic products, industrial technology, and professional IT & digital services to businesses and individuals.
+            Aditya Enterprises is a technology solutions company providing reliable electronic products, industrial technology, and professional IT & digital services to businesses and individuals.
           </p>
         </div>
 
