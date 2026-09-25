@@ -83,7 +83,7 @@ export default function Products() {
                         <div className="h-px w-3/4 bg-gradient-to-r from-transparent via-white/40 to-transparent" />
 
                         <p className="mt-8 text-[11px] font-medium uppercase tracking-[0.3em] text-white/70">
-                            AE Techno Services
+                            Aditya Enterprises
                         </p>
 
                         <p className="mt-3 text-base text-white/90 font-light tracking-wide">
@@ -129,7 +129,7 @@ export default function Products() {
                                         
                                         {/* Premium Glassmorphism Price Badge */}
                                         <span className="absolute right-4 top-4 z-10 rounded-full border border-white/20 bg-black/40 px-4 py-1.5 text-sm font-medium tracking-wide text-white backdrop-blur-md shadow-lg">
-                                            ${product.price.toLocaleString()}
+                                            ₹{product.price.toLocaleString()}
                                         </span>
 
                                         <img
