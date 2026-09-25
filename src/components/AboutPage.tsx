@@ -1,4 +1,3 @@
-```tsx
 import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Collaborateforaboutpage from "@/pages/Collaborateforaboutpage";
@@ -41,7 +40,7 @@ const AboutMindMap: React.FC = () => {
 
   return (
     <>
-      {/* TOP HERO SECTION */}
+      {/* ✅ TOP HERO SECTION ADDED */}
       <section className="relative min-h-screen bg-gradient-to-b from-[#7834c8] via-[#7834c8] to-black">
         <Navbar onScrollTo={handleScrollTo} />
 
@@ -50,13 +49,12 @@ const AboutMindMap: React.FC = () => {
             AboutUs
           </h1>
 
+
           <div className="mx-auto mt-12 w-full max-w-xl text-center">
             <div className="h-px w-full bg-white/35" />
-
             <p className="mt-5 text-[10px] uppercase tracking-[0.28em] text-white/80">
               Feature
             </p>
-
             <p className="mt-1 text-sm font-semibold text-white">
               Who We Are & What We Do
             </p>
@@ -66,7 +64,7 @@ const AboutMindMap: React.FC = () => {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-36 bg-gradient-to-b from-transparent via-black/40 to-black" />
       </section>
 
-      {/* MAIN ABOUT SECTION */}
+      {/* ✅ MAIN ABOUT SECTION (VERTICAL ABOUT US REMOVED) */}
       <section
         id="about"
         className="relative min-h-screen w-full overflow-hidden bg-black"
@@ -84,6 +82,7 @@ const AboutMindMap: React.FC = () => {
             title="WHO WE ARE?"
             align="right"
             text="
+
 Aditya Enterprises is a technology solutions company providing reliable electronic products, industrial technology, and professional IT & digital services to businesses and individuals.
 "
           />
@@ -91,6 +90,7 @@ Aditya Enterprises is a technology solutions company providing reliable electron
           <Card
             title="WHAT WE DO?"
             text="
+
 We provide reliable electronic and industrial technology products along with professional IT and digital services, helping businesses find the right solutions to build, operate, and grow.
 "
           />
@@ -121,32 +121,19 @@ We provide reliable electronic and industrial technology products along with pro
 
         {/* ===== OUR STORY SECTION ===== */}
         <div className="relative px-4 sm:px-10 md:px-16 py-20 flex flex-col-reverse md:flex-row items-center gap-12">
-
           {/* TEXT */}
           <div className="flex-1 text-center md:text-left md:ml-32">
             <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-4">
               Our <span className="text-yellow-400">Story</span>
             </h2>
 
-            <p className="italic text-gray-300 mb-6">
-              From Passion to Purpose
-            </p>
+            <p className="italic text-gray-300 mb-6">From Passion to Purpose</p>
 
             <p className="text-base sm:text-lg text-gray-200 leading-relaxed">
-              Aditya Enterprises was founded with a simple belief — that the
-              right technology can solve real problems, create new
-              opportunities, and help businesses move forward with confidence.
-
+              Aditya Enterprises was founded with a simple belief — that the right technology can solve real problems, create new opportunities, and help businesses move forward with confidence.
               <br />
               <br />
-
-              Today, we bring together electronic and industrial technology
-              products with IT and digital services to help our customers turn
-              their requirements into practical solutions. From color
-              measurement equipment and electronics to websites, mobile
-              applications, design, hosting, and digital marketing, we are
-              committed to delivering reliable technology tailored to every
-              need.
+              Today, we bring together electronic and industrial technology products with IT and digital services to help our customers turn their requirements into practical solutions. From color measurement equipment and electronics to websites, mobile applications, design, hosting, and digital marketing, we are committed to delivering reliable technology tailored to every need.
             </p>
           </div>
 
@@ -154,7 +141,7 @@ We provide reliable electronic and industrial technology products along with pro
           <div className="flex-1 w-full">
             <img
               src="/Gemini_Generated_Image_y7y4idy7y4idy7y4.png"
-              alt="Aditya Enterprises - Our Story"
+              alt="Our Story"
               className="w-full h-[240px] sm:h-[300px] md:h-[380px] object-cover rounded-2xl shadow-xl"
             />
           </div>
