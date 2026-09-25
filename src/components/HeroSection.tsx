@@ -165,7 +165,7 @@ const HeroSection = () => {
         <div className="flex flex-wrap items-center gap-4">
           <a
             href="/Products"
-            className="group inline-flex items-center gap-4 bg-[#fff] hover:bg-[#7834c8] text-black px-8 py-4 rounded-full font-bold text-xs tracking-[0.1em] uppercase transition-all duration-300"
+            className="group inline-flex items-center gap-4 bg-[#fff] hover:bg-[#d4aeff] text-black px-8 py-4 rounded-full font-bold text-xs tracking-[0.1em] uppercase transition-all duration-300"
           >
             Explore Products
             <div className="w-8 h-8 rounded-full bg-black/10 flex items-center justify-center transform group-hover:translate-x-1 transition-transform">
