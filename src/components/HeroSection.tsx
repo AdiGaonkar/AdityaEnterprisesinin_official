@@ -164,7 +164,7 @@ const HeroSection = () => {
         {/* Clean, distinct buttons */}
         <div className="flex flex-wrap items-center gap-4">
           <a
-            href="/Products"
+            href="/Portfolio"
             className="group inline-flex items-center gap-4 bg-[#fff] hover:bg-[#d4aeff] text-black px-8 py-4 rounded-full font-bold text-xs tracking-[0.1em] uppercase transition-all duration-300"
           >
             Products & IT Portfolio
