@@ -173,9 +173,14 @@ const HeroSection = () => {
             </div>
           </a>
 
-          <button className="px-8 py-4 rounded-full font-bold text-xs tracking-[0.1em] uppercase text-white border border-white/20 hover:bg-white/10 transition-all duration-300">
-            Contact Us
-          </button>
+         import { Link } from "react-router-dom";
+
+<Link
+  to="/Contact"
+  className="px-8 py-4 rounded-full font-bold text-xs tracking-[0.1em] uppercase text-white border border-white/20 hover:bg-white/10 transition-all duration-300"
+>
+  Contact Us
+</Link>
         </div>
       </div>
 
