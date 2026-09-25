@@ -158,7 +158,7 @@ const HeroSection = () => {
         </h1>
 
         <p className="text-base sm:text-lg text-gray-300 max-w-[600px] leading-relaxed mb-10 font-light">
-          AE Techno Services provides reliable electronics, technology products, and digital solutions tailored to your needs. From electronic products to websites, mobile apps, design, hosting, and digital marketing, we deliver practical technology solutions that help businesses grow.
+          Aditya Enterprises provides reliable electronics, technology products, and digital solutions tailored to your needs. From electronic products to websites, mobile apps, design, hosting, and digital marketing, we deliver practical technology solutions that help businesses grow.
         </p>
 
         {/* Clean, distinct buttons */}
