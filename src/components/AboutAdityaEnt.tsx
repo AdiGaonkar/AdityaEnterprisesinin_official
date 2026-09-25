@@ -9,7 +9,7 @@ const AboutSection = () => {
           {/* LEFT: TITLE */}
           <div className="text-left">
             <h1 className="text-[2rem] sm:text-[3rem] lg:text-[4rem] font-semibold leading-[1.05]">
-              AETechno Services is your{" "}
+              Aditya Enterprises is your{" "}
               <span className="block sm:inline text-[2rem] sm:text-[4rem] lg:text-[4rem] font-thin text-[#171717]">
                 trusted technology partner
               </span>{" "}
@@ -20,7 +20,7 @@ const AboutSection = () => {
           {/* RIGHT: PARAS */}
           <div className="text-left">
             <p className="text-base sm:text-lg font-semibold leading-relaxed text-black">
-              Strong businesses need the right technology, a clear digital presence, and solutions built around their needs. At AE Techno Services, we provide a wide range of electronic and industrial technology products, along with professional IT and digital services.
+              Strong businesses need the right technology, a clear digital presence, and solutions built around their needs. At Aditya Enterprises, we provide a wide range of electronic and industrial technology products, along with professional IT and digital services.
             </p>
 
             <p className="mt-6 text-base sm:text-lg leading-relaxed text-black">
