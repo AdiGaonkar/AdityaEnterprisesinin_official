@@ -173,14 +173,12 @@ const HeroSection = () => {
             </div>
           </a>
 
-         import { Link } from "react-router-dom";
-
-<Link
-  to="/Contact"
+        <a
+  href="/Contact"
   className="px-8 py-4 rounded-full font-bold text-xs tracking-[0.1em] uppercase text-white border border-white/20 hover:bg-white/10 transition-all duration-300"
 >
   Contact Us
-</Link>
+</a>
         </div>
       </div>
 
