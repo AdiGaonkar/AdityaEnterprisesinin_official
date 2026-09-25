@@ -167,6 +167,3 @@ We provide reliable electronic and industrial technology products along with pro
 };
 
 export default AboutMindMap;
-```
-
-Bro, I also changed the image `alt` text from **"Our Story"** to **"Aditya Enterprises - Our Story"** for better accessibility/SEO. Everything else remains structurally the same.
