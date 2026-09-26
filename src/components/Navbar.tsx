@@ -174,7 +174,7 @@ const Navbar = ({ onScrollTo = () => { } }) => {
           ${navOverlayOpen ? "translate-y-0" : "translate-y-full"}`}
         >
           <div className="flex flex-col h-full p-10">
-            <div className="text-2xl font-bold">AETechno Services</div>
+            <div className="text-2xl font-bold">Aditya Enterprises</div>
             <div className="mt-auto space-y-3 text-sm opacity-90">
               <div className="flex items-center gap-2">
                 <span>★★★★★</span>
