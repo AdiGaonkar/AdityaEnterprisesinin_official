@@ -14,16 +14,14 @@ type Product = {
 };
 
 export default function ProductView() {
-  const { id } = useParams<{ id: string }>(); // Grabs the ID from the URL
+  const { id } = useParams<{ id: string }>(); 
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   
-  // This state controls which image is currently showing in the big viewer
   const [activeImage, setActiveImage] = useState<string>('');
 
   useEffect(() => {
     const fetchProduct = async () => {
-      // Fetch the single product that matches the ID
       const { data, error } = await supabase
         .from('products')
         .select('*')
@@ -34,7 +32,7 @@ export default function ProductView() {
         console.error("Error fetching product:", error);
       } else {
         setProduct(data);
-        setActiveImage(data.image_url); // Default the big image to the main thumbnail
+        setActiveImage(data.image_url);
       }
       setLoading(false);
     };
@@ -44,93 +42,105 @@ export default function ProductView() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black flex justify-center items-center font-sans">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+      <div className="min-h-screen bg-white flex justify-center items-center font-sans">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-black"></div>
       </div>
     );
   }
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-black flex flex-col justify-center items-center font-sans text-white">
+      <div className="min-h-screen bg-white flex flex-col justify-center items-center font-sans text-black">
         <h1 className="text-3xl font-bold mb-4">Product Not Found</h1>
-        <Link to="/products" className="text-blue-400 hover:underline">← Back to Products</Link>
+        <Link to="/products" className="text-gray-500 hover:underline">← Back to Products</Link>
       </div>
     );
   }
 
-  // YAHAN FIX KIYA HAI: STRICT FILTER
- // SUPER STRICT FILTER: Sirf unko rakhega jo actual working links hain (http/https se start hote hain)
+  // SUPER STRICT FILTER
   const allImages = [product.image_url, ...(product.gallery_urls || [])].filter(
     (url) => url && typeof url === 'string' && url.trim() !== '' && url.trim().startsWith('http')
   );
 
   return (
-    <div className="min-h-screen bg-black font-sans pb-20">
-      {/* If your Navbar is absolute/fixed, you might need some padding-top here */}
+    <div className="min-h-screen bg-[#fafafa] font-sans pb-20">
       <Navbar />
 
-      <div className="max-w-7xl mx-auto px-6 pt-32 lg:pt-40">
+      <div className="max-w-6xl mx-auto px-6 pt-32 lg:pt-40">
         
         {/* Breadcrumb Navigation */}
-        <div className="mb-8">
-          <Link to="/products" className="text-white/50 hover:text-white transition text-sm font-medium">
+        <div className="mb-6">
+          <Link to="/products" className="text-gray-500 hover:text-black transition text-sm font-medium">
             ← Back to all products
           </Link>
         </div>
 
         {/* Main Product Container */}
-        <div className="bg-white rounded-3xl p-6 md:p-10 lg:p-12 shadow-2xl flex flex-col lg:flex-row gap-12 lg:gap-16">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
           
           {/* ================= LEFT SIDE: IMAGE GALLERY ================= */}
-          <div className="w-full lg:w-1/2 flex flex-col-reverse md:flex-row gap-4 lg:gap-6">
+          <div className="w-full lg:w-1/2 flex flex-col">
             
-            {/* Thumbnails (Vertical on desktop, Horizontal on mobile) */}
-            <div className="flex md:flex-col gap-3 overflow-x-auto md:overflow-y-auto max-h-[500px] scrollbar-hide py-1 pr-1">
-              {allImages.map((imgUrl, idx) => (
-                <button 
-                  key={idx}
-                  onClick={() => setActiveImage(imgUrl)}
-                  className={`flex-shrink-0 w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden border-2 transition-all ${
-                    activeImage === imgUrl ? 'border-black scale-105 shadow-md' : 'border-transparent opacity-60 hover:opacity-100 bg-gray-100'
-                  }`}
-                >
-                  <img src={imgUrl} alt={`Thumbnail ${idx}`} className="w-full h-full object-cover" />
-                </button>
-              ))}
-            </div>
-
             {/* Main Active Image Viewer */}
-            <div className="flex-1 bg-[#f4f5f7] rounded-2xl overflow-hidden flex items-center justify-center min-h-[300px] md:min-h-[500px]">
+            <div className="w-full bg-[#f0f0f0] rounded-[2rem] overflow-hidden flex items-center justify-center min-h-[400px] md:min-h-[500px] mb-6">
               {activeImage && activeImage.trim() !== '' ? (
                 <img 
                   src={activeImage} 
                   alt={product.name} 
-                  className="w-full h-full object-contain mix-blend-multiply p-4"
+                  className="w-full h-full object-contain mix-blend-multiply p-8"
                 />
               ) : (
                 <span className="text-gray-400 font-medium">Image not available</span>
               )}
             </div>
+
+            {/* Thumbnails (Horizontal below main image) */}
+            <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-2">
+              {allImages.map((imgUrl, idx) => (
+                <button 
+                  key={idx}
+                  onClick={() => setActiveImage(imgUrl)}
+                  className={`flex-shrink-0 w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden border-2 transition-all bg-[#f0f0f0] ${
+                    activeImage === imgUrl ? 'border-black opacity-100' : 'border-transparent opacity-50 hover:opacity-100'
+                  }`}
+                >
+                  <img src={imgUrl} alt={`Thumbnail ${idx}`} className="w-full h-full object-contain mix-blend-multiply p-2" />
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* ================= RIGHT SIDE: PRODUCT INFO ================= */}
-          <div className="w-full lg:w-1/2 flex flex-col justify-center">
+          <div className="w-full lg:w-1/2 flex flex-col pt-4">
             
-            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-black leading-tight mb-3 font-serif">
               {product.name}
             </h1>
             
-            <div className="text-3xl font-extrabold text-black mb-6">
-              ${product.price.toLocaleString()}
+            {/* Static Reviews Mockup to match design */}
+            <div className="flex items-center gap-2 mb-8">
+              <div className="flex text-black text-sm">
+                ★★★★★
+              </div>
+              <span className="text-sm text-gray-500 font-medium">Top Rated Product</span>
             </div>
-            
-            <div className="w-16 h-1 bg-black mb-6 rounded-full"></div>
 
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">About this product</h3>
-            <p className="text-gray-600 leading-relaxed mb-10 whitespace-pre-line">
+            <p className="text-gray-700 leading-relaxed mb-10 whitespace-pre-line text-lg">
               {product.description}
             </p>
+
+            <div className="mb-10">
+              <p className="font-bold text-black mb-4">Choose an option:</p>
+              
+              {/* Styled "Option" Box mimicking the screenshot */}
+              <div className="border-2 border-black rounded-2xl p-5 flex items-start gap-4 bg-white cursor-pointer hover:bg-gray-50 transition-colors">
+                <div className="mt-1 w-5 h-5 rounded-full border-[5px] border-black flex-shrink-0"></div>
+                <div>
+                  <p className="font-bold text-black text-lg">One-time purchase</p>
+                  <p className="text-gray-700 font-medium mt-1">₹ {product.price.toLocaleString()}</p>
+                </div>
+              </div>
+            </div>
 
             {/* Checkout / Amazon Action */}
             <div className="mt-auto">
@@ -139,20 +149,15 @@ export default function ProductView() {
                   href={product.amazon_link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-center gap-3 w-full bg-[#FF9900] hover:bg-[#e38800] text-black px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                  className="block w-full bg-black text-white text-center px-8 py-5 rounded-[2rem] font-bold text-xl hover:bg-gray-800 transition-colors shadow-lg"
                 >
                   Buy on Amazon
-                  <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
                 </a>
               ) : (
-                <button disabled className="w-full bg-gray-200 text-gray-500 px-8 py-4 rounded-full font-bold text-lg cursor-not-allowed">
+                <button disabled className="w-full bg-gray-200 text-gray-500 px-8 py-5 rounded-[2rem] font-bold text-xl cursor-not-allowed">
                   Currently Unavailable
                 </button>
               )}
-              
-              <p className="text-center text-xs text-gray-400 mt-4 font-medium uppercase tracking-wider">
-                Secure transaction via external partner
-              </p>
             </div>
 
           </div>
