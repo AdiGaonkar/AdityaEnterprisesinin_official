@@ -140,8 +140,8 @@ const machineData: Machine[] = [
   },
 
   {
-    id: "colourimeter",
-    title: "Colourimeters",
+    id: "colorimeter",
+    title: "Colorimeters",
     shortDescription:
       "Professional color measurement instruments for fast and consistent color evaluation.",
     description:
