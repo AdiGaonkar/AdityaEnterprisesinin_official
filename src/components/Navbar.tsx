@@ -241,7 +241,7 @@ const Navbar = ({ onScrollTo = () => { } }) => {
               </div>
               <div className="text-right">
                 <p className="underline hover:opacity-80 transition cursor-pointer">Privacy Policy & Cookies</p>
-                <p>© AETechno Services 2025</p>
+                <p>© AdityaEnterprises 2025</p>
               </div>
             </div>
           </div>
