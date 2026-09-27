@@ -531,7 +531,7 @@ export default function ServicesSection() {
               </a>
 
               <a
-                href="https://wa.me/918779394211"
+                href="https://wa.me/919321826572"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-xl border border-[#e5e7eb] bg-white px-5 py-3 text-sm font-semibold text-black transition hover:bg-[#f3f4f6]"
