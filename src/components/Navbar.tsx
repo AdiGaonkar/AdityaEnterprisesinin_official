@@ -6,9 +6,9 @@ const Navbar = ({ onScrollTo = () => { } }) => {
   const [navOverlayOpen, setNavOverlayOpen] = useState(false);
 
   const mainNavItems = [
-    { label: "About us", id: "about", href: "/AboutPage" },
     { label: "Products", id: "reviews", href: "/Portfolio" },
     { label: "Services", id: "contact", href: "/ServicesSection" },
+    { label: "About us", id: "about", href: "/AboutPage" },
     { label: "Contact us", id: "contact", href: "/Contact" },
   ];
 
