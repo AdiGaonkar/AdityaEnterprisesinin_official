@@ -7,7 +7,7 @@ const Navbar = ({ onScrollTo = () => { } }) => {
 
   const mainNavItems = [
     { label: "About us", id: "about", href: "/AboutPage" },
-    { label: "Products", id: "reviews", href: "/Products" },
+    { label: "Products", id: "reviews", href: "/Portfolio" },
     { label: "Services", id: "contact", href: "/ServicesSection" },
     { label: "Contact us", id: "contact", href: "/Contact" },
   ];
