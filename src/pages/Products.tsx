@@ -1054,7 +1054,7 @@ const PortfolioPage = () => {
           <div className="mx-auto flex min-h-screen max-w-6xl -mt-28 flex-col items-center justify-center px-4 pt-24 pb-16 sm:pt-28">
 
             <h1 className="text-center text-8xl text-white sm:text-6xl md:text-9xl">
-              Portfolio
+              Products
             </h1>
 
             <div className="mx-auto mt-12 w-full max-w-xl text-center">
@@ -1062,7 +1062,7 @@ const PortfolioPage = () => {
               <div className="h-px w-full bg-white/35" />
 
               <p className="mt-5 text-[10px] uppercase tracking-[0.28em] text-white/80">
-                AE Techno Services
+                Aditya Enterprises
               </p>
 
               <p className="mt-1 text-sm font-semibold text-white">
