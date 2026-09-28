@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import Navbar from "./Navbar";
+import Navbar from "../components/Navbar";
 import Collaborate from "@/components/Collaborate";
 import {
   X,
@@ -140,8 +140,8 @@ const machineData: Machine[] = [
   },
 
   {
-    id: "colorimeter",
-    title: "Colorimeters",
+    id: "colourimeter",
+    title: "Colourimeters",
     shortDescription:
       "Professional color measurement instruments for fast and consistent color evaluation.",
     description:
@@ -1054,7 +1054,7 @@ const PortfolioPage = () => {
           <div className="mx-auto flex min-h-screen max-w-6xl -mt-28 flex-col items-center justify-center px-4 pt-24 pb-16 sm:pt-28">
 
             <h1 className="text-center text-8xl text-white sm:text-6xl md:text-9xl">
-              Products
+              Portfolio
             </h1>
 
             <div className="mx-auto mt-12 w-full max-w-xl text-center">
@@ -1062,7 +1062,7 @@ const PortfolioPage = () => {
               <div className="h-px w-full bg-white/35" />
 
               <p className="mt-5 text-[10px] uppercase tracking-[0.28em] text-white/80">
-                Aditya Enterprises
+                AE Techno Services
               </p>
 
               <p className="mt-1 text-sm font-semibold text-white">
