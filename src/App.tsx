@@ -12,7 +12,6 @@ import ServicesSection from "./components/ServicesSection";
 import Navbar from "./components/Navbar";
 import Portfolio from "./components/Portfolio";
 import Trendwise from "./pages/Trendwise";
-import Gogas from "./pages/Gogas";
 import GraphicDesign from "./pages/GraphicDesign";
 import PosterBanner from "./pages/PosterBanner";
 import Career from "./pages/Career";
@@ -39,7 +38,6 @@ const App = () => (
             <Route path="/ServicesSection" element={<ServicesSection />} />
             <Route path="/Portfolio" element={<Portfolio />} />
             <Route path="/Trendwise" element={<Trendwise />} />
-            <Route path="/Gogas" element={<Gogas />} />
             <Route path="/GraphicDesign" element={<GraphicDesign />} />
             <Route path="/PosterBanner" element={<PosterBanner />} />
             <Route path="/Career" element={<Career />} />
