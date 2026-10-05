@@ -50,14 +50,29 @@ const products = [
 const PreRegister = () => {
   const navigate = useNavigate();
 
+  /*
+   * REGISTER
+   * Uses string concatenation instead of a template literal
+   * to avoid the Vercel/esbuild parsing issue.
+   */
   const handleRegister = (product: string) => {
-    navigate(`/PreRegisterForm?product=${encodeURIComponent(product)}`);
+    navigate(
+      "/PreRegisterForm?product=" + encodeURIComponent(product)
+    );
   };
 
+  /*
+   * VIEW PRODUCT DETAILS
+   */
   const handleViewDetails = (productId: string) => {
-    navigate(`/ProductDetails?product=${encodeURIComponent(productId)}`);
+    navigate(
+      "/ProductDetails?product=" + encodeURIComponent(productId)
+    );
   };
 
+  /*
+   * SCROLL TO PRODUCT COLLECTION
+   */
   const scrollToCollection = () => {
     document
       .getElementById("collection")
@@ -103,9 +118,9 @@ const PreRegister = () => {
             {/* EYEBROW */}
             <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[#7834c8]/50 bg-gradient-to-r from-[#7834c8]/20 to-transparent px-5 py-2.5 backdrop-blur-md">
               <span className="relative flex h-2.5 w-2.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-purple-400 opacity-75"></span>
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-purple-400 opacity-75" />
 
-                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-purple-300 shadow-[0_0_10px_#7834c8]"></span>
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-purple-300 shadow-[0_0_10px_#7834c8]" />
               </span>
 
               <span className="text-[11px] font-bold uppercase tracking-[0.35em] text-purple-200">
@@ -300,14 +315,12 @@ const PreRegister = () => {
                     {product.description}
                   </p>
 
-                  {/* FOOTER */}
+                  {/* FOOTER / ACTIONS */}
                   <div className="mt-8 flex flex-col gap-5 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-                    {/* LABEL */}
                     <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
                       Register your interest
                     </span>
 
-                    {/* ACTION BUTTONS */}
                     <div className="flex items-center gap-3">
                       {/* VIEW DETAILS */}
                       <button
@@ -404,7 +417,7 @@ const PreRegister = () => {
                       {step.title}
                     </h3>
 
-                    <p className="mt-2.5 max-w-lg text-base leading-relaxed text-white/50 transition-colors duration-300 group-hover:text-white/80">
+                    <p className="mt-2.5 max-w-lg text-base leading-relaxed text-white/50">
                       {step.text}
                     </p>
                   </div>
@@ -511,28 +524,3 @@ const PreRegister = () => {
 
 export default PreRegister;
 ```
-
-### One thing you need to add
-
-This code assumes you have a route like:
-
-```tsx
-<Route path="/ProductDetails" element={<ProductDetails />} />
-```
-
-because the new **View Details** button navigates to:
-
-```text
-/ProductDetails?product=analog-watch
-/ProductDetails?product=smart-watch
-/ProductDetails?product=smart-band
-/ProductDetails?product=smart-ring
-```
-
-So the flow becomes:
-
-**Upcoming Product → View Details → Product Details → Register Your Interest**
-
-while the existing **Register** button continues directly to your `PreRegisterForm`. Your original registration navigation is preserved.
-
-If you want, I can also give you the **complete `ProductDetails.tsx` + route code**, so clicking **View Details** actually opens a premium product page for each watch/band/ring.
