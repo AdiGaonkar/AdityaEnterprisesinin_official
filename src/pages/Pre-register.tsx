@@ -51,15 +51,11 @@ const PreRegister = () => {
   const navigate = useNavigate();
 
   const handleRegister = (product: string) => {
-    navigate(
-      `/PreRegisterForm?product=${encodeURIComponent(product)}`
-    );
+    navigate(`/PreRegisterForm?product=${encodeURIComponent(product)}`);
   };
 
   const handleViewDetails = (productId: string) => {
-    navigate(
-      `/ProductDetails?product=${encodeURIComponent(productId)}`
-    );
+    navigate(`/ProductDetails?product=${encodeURIComponent(productId)}`);
   };
 
   const scrollToCollection = () => {
