@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
@@ -50,29 +49,19 @@ const products = [
 const PreRegister = () => {
   const navigate = useNavigate();
 
-  /*
-   * REGISTER
-   * Uses string concatenation instead of a template literal
-   * to avoid the Vercel/esbuild parsing issue.
-   */
+  // Register button
   const handleRegister = (product: string) => {
-    navigate(
-      "/PreRegisterForm?product=" + encodeURIComponent(product)
-    );
+    const encodedProduct = encodeURIComponent(product);
+    navigate("/PreRegisterForm?product=" + encodedProduct);
   };
 
-  /*
-   * VIEW PRODUCT DETAILS
-   */
+  // View Details button
   const handleViewDetails = (productId: string) => {
-    navigate(
-      "/ProductDetails?product=" + encodeURIComponent(productId)
-    );
+    const encodedProduct = encodeURIComponent(productId);
+    navigate("/ProductDetails?product=" + encodedProduct);
   };
 
-  /*
-   * SCROLL TO PRODUCT COLLECTION
-   */
+  // Scroll to collection
   const scrollToCollection = () => {
     document
       .getElementById("collection")
@@ -118,9 +107,9 @@ const PreRegister = () => {
             {/* EYEBROW */}
             <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[#7834c8]/50 bg-gradient-to-r from-[#7834c8]/20 to-transparent px-5 py-2.5 backdrop-blur-md">
               <span className="relative flex h-2.5 w-2.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-purple-400 opacity-75" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-purple-400 opacity-75"></span>
 
-                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-purple-300 shadow-[0_0_10px_#7834c8]" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-purple-300 shadow-[0_0_10px_#7834c8]"></span>
               </span>
 
               <span className="text-[11px] font-bold uppercase tracking-[0.35em] text-purple-200">
@@ -315,15 +304,18 @@ const PreRegister = () => {
                     {product.description}
                   </p>
 
-                  {/* FOOTER / ACTIONS */}
+                  {/* FOOTER */}
                   <div className="mt-8 flex flex-col gap-5 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+                    {/* LABEL */}
                     <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
                       Register your interest
                     </span>
 
+                    {/* ACTION BUTTONS */}
                     <div className="flex items-center gap-3">
                       {/* VIEW DETAILS */}
                       <button
+                        type="button"
                         onClick={() => handleViewDetails(product.id)}
                         className="group/button inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3.5 text-[10px] font-bold uppercase tracking-[0.15em] text-white/80 backdrop-blur-md transition-all duration-300 hover:border-purple-400/40 hover:bg-purple-500/10 hover:text-white"
                       >
@@ -336,6 +328,7 @@ const PreRegister = () => {
 
                       {/* REGISTER */}
                       <button
+                        type="button"
                         onClick={() => handleRegister(product.name)}
                         className="group/button inline-flex items-center gap-3 rounded-full bg-white px-6 py-3.5 text-[10px] font-bold uppercase tracking-[0.15em] text-black transition-all duration-300 hover:bg-gradient-to-r hover:from-[#7834c8] hover:to-[#6127a3] hover:text-white hover:shadow-[0_0_20px_rgba(120,52,200,0.4)] hover:ring-2 hover:ring-purple-400/50"
                       >
@@ -457,6 +450,7 @@ const PreRegister = () => {
           </p>
 
           <button
+            type="button"
             onClick={scrollToCollection}
             className="group mt-12 inline-flex items-center gap-4 rounded-full bg-gradient-to-r from-[#7834c8] to-[#6127a3] px-9 py-4 text-xs font-bold uppercase tracking-[0.15em] text-white shadow-[0_10px_40px_rgba(120,52,200,.3)] transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_15px_60px_rgba(120,52,200,.5)] hover:ring-2 hover:ring-purple-400/50"
           >
