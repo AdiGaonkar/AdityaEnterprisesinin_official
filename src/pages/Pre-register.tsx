@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 const products = [
   {
@@ -49,7 +50,7 @@ const PreRegister = () => {
 
   const handleRegister = (product: string) => {
     navigate(
-      `/PreRegisterForm?product=${encodeURIComponent(product)}`
+      `/pre-register/form?product=${encodeURIComponent(product)}`
     );
   };
 
@@ -83,85 +84,7 @@ const PreRegister = () => {
 
         <div className="mx-auto max-w-7xl">
 
-          <div className="flex items-center justify-between">
-
-            {/* BRAND */}
-
-            <button
-              onClick={() => navigate("/")}
-              className="group flex items-center gap-3"
-            >
-
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-black transition-all duration-300 group-hover:bg-yellow-400">
-
-                <span className="text-[10px] font-bold">
-                  AE
-                </span>
-
-              </div>
-
-              <div className="hidden text-left sm:block">
-
-                <p className="text-xs font-semibold tracking-tight text-white">
-                  Aditya Enterprises
-                </p>
-
-                <p className="mt-0.5 text-[8px] uppercase tracking-[0.2em] text-gray-500">
-                  Techno Services
-                </p>
-
-              </div>
-
-            </button>
-
-
-            {/* NAV */}
-
-            <nav className="hidden items-center gap-1 rounded-full border border-white/10 bg-black/40 p-1 backdrop-blur-xl md:flex">
-
-              <button
-                onClick={() => navigate("/")}
-                className="rounded-full px-5 py-2.5 text-[10px] uppercase tracking-[0.12em] text-gray-500 transition-all duration-300 hover:bg-white/10 hover:text-white"
-              >
-                Home
-              </button>
-
-              <button
-                onClick={() => navigate("/Portfolio")}
-                className="rounded-full px-5 py-2.5 text-[10px] uppercase tracking-[0.12em] text-gray-500 transition-all duration-300 hover:bg-white/10 hover:text-white"
-              >
-                Products
-              </button>
-
-              <button
-                className="rounded-full bg-white px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-black"
-              >
-                Pre-Register
-              </button>
-
-              <button
-                onClick={() => navigate("/Contact")}
-                className="rounded-full px-5 py-2.5 text-[10px] uppercase tracking-[0.12em] text-gray-500 transition-all duration-300 hover:bg-white/10 hover:text-white"
-              >
-                Contact
-              </button>
-
-            </nav>
-
-
-            {/* RIGHT SIDE */}
-
-            <div className="flex items-center gap-3">
-
-              <span className="hidden text-[9px] uppercase tracking-[0.2em] text-gray-600 lg:block">
-                Aditya Enterprises
-              </span>
-
-              <div className="h-8 w-8 rounded-full border border-white/10 bg-white/[0.03]" />
-
-            </div>
-
-          </div>
+          <Navbar />
 
         </div>
 
@@ -440,9 +363,7 @@ const PreRegister = () => {
                     </p>
 
                     <h3 className="font-stacksansnotch text-2xl font-medium leading-tight text-white sm:text-3xl">
-
                       {product.name}
-
                     </h3>
 
                   </div>
@@ -605,7 +526,7 @@ const PreRegister = () => {
 
       <section className="relative z-10 overflow-hidden border-t border-white/10 bg-[#0a0a0a]">
 
-        {/* Decorative circles */}
+        {/* DECORATIVE CIRCLES */}
 
         <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full border border-yellow-500/10" />
 
