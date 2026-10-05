@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { supabase } from "../supabaseClients";
+import { supabase } from "../supabaseClient";
 interface Registration {
   id: string;
   full_name: string;
