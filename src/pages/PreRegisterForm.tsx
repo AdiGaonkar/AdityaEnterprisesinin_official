@@ -36,11 +36,12 @@ const PreRegisterForm = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    setLoading(true);
+  setLoading(true);
 
-    const { error } = await supabase
+  try {
+    const { data, error } = await supabase
       .from("pre_registrations")
       .insert({
         full_name: formData.fullName,
@@ -52,19 +53,34 @@ const PreRegisterForm = () => {
         state: formData.state,
         pincode: formData.pincode,
         updates: formData.updates,
-      });
-
-    setLoading(false);
+      })
+      .select();
 
     if (error) {
-      console.error(error);
-      alert("Something went wrong. Please try again.");
+      console.error("SUPABASE ERROR:", error);
+
+      alert(
+        `Supabase Error:\n\n${error.message}\n\nCode: ${error.code}`
+      );
+
       return;
     }
 
-    setSubmitted(true);
-  };
+    console.log("Registration saved:", data);
 
+    setSubmitted(true);
+  } catch (err) {
+    console.error("Unexpected error:", err);
+
+    alert(
+      `Unexpected Error:\n\n${
+        err instanceof Error ? err.message : String(err)
+      }`
+    );
+  } finally {
+    setLoading(false);
+  }
+};
   if (submitted) {
     return (
       <main className="min-h-screen bg-[#090707] text-white flex items-center justify-center px-6">
