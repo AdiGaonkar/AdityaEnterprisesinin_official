@@ -300,7 +300,7 @@ const PreRegisterForm = () => {
               Be the
               <br />
               <span className="bg-gradient-to-br from-white via-white to-purple-400 bg-clip-text text-transparent">
-                Be Part of What’s Next.
+                Part of What’s Next.
               </span>
             </h1>
 
