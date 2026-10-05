@@ -52,12 +52,12 @@ const App = () => (
             <Route path="/Machines" element={<Machines />} />
             <Route path="/pre-register" element={<PreRegister />} />
             <Route
-  path="/pre-register/form"
+  path="/PreRegisterForm"
   element={<PreRegisterForm />}
 />
 
 <Route
-  path="/admin/pre-registrations"
+  path="/AdminPreRegistrations"
   element={<AdminPreRegistrations />}
 />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
