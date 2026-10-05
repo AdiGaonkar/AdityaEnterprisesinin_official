@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
-import { supabase } from "../supabaseClients";
-
+import { supabase } from "../supabaseClient";
 const PreRegisterForm = () => {
   const [searchParams] = useSearchParams();
 
