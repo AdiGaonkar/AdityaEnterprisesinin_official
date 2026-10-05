@@ -22,6 +22,8 @@ import AdminProducts from "./pages/AdminProducts";
 import ProductView from "./pages/ProductView";
 import Machines from "./pages/Machines";
 import PreRegister from "./pages/Pre-register";
+import PreRegisterForm from "./pages/PreRegisterForm";
+import AdminPreRegistrations from "./pages/AdminPreRegistrations";
 
 const queryClient = new QueryClient();
 
@@ -49,6 +51,15 @@ const App = () => (
             <Route path="/product/:id" element={<ProductView />} />
             <Route path="/Machines" element={<Machines />} />
             <Route path="/pre-register" element={<PreRegister />} />
+            <Route
+  path="/pre-register/form"
+  element={<PreRegisterForm />}
+/>
+
+<Route
+  path="/admin/pre-registrations"
+  element={<AdminPreRegistrations />}
+/>
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
