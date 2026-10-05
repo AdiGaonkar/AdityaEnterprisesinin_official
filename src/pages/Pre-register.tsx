@@ -579,62 +579,7 @@ const PreRegister = () => {
           FOOTER
       ====================================================== */}
 
-      <footer className="relative z-10 border-t border-white/10 bg-black px-6 py-10 sm:px-10 md:px-16">
-
-        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 md:flex-row md:items-end">
-
-          {/* BRAND */}
-
-          <div>
-
-            <div className="flex items-center gap-3">
-
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-black">
-
-                <span className="text-[9px] font-bold">
-                  AE
-                </span>
-
-              </div>
-
-              <div>
-
-                <p className="text-xs font-semibold">
-                  Aditya Enterprises
-                </p>
-
-                <p className="text-[8px] uppercase tracking-[0.2em] text-gray-600">
-                  Techno Services
-                </p>
-
-              </div>
-
-            </div>
-
-            <p className="mt-4 text-[10px] text-gray-600">
-              Grow your dreams.
-            </p>
-
-          </div>
-
-
-          {/* RIGHT */}
-
-          <div className="md:text-right">
-
-            <p className="text-[9px] uppercase tracking-[0.2em] text-gray-700">
-              Upcoming Collection
-            </p>
-
-            <p className="mt-2 text-xs text-gray-500">
-              Watches & Wearable Technology
-            </p>
-
-          </div>
-
-        </div>
-
-      </footer>
+      
 
     </main>
   );
