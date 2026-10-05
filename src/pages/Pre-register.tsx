@@ -48,7 +48,7 @@ const PreRegister = () => {
   const navigate = useNavigate();
 
   const handleRegister = (product: string) => {
-    navigate(`/pre-register/form?product=${encodeURIComponent(product)}`);
+    navigate(`/PreRegisterForm?product=${encodeURIComponent(product)}`);
   };
 
   return (
