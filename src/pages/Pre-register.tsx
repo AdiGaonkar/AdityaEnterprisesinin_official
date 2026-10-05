@@ -62,408 +62,267 @@ const PreRegister = () => {
   };
 
   return (
-    <main className="min-h-screen overflow-hidden bg-black font-sans text-white">
-
+    <main className="min-h-screen overflow-hidden bg-[#050505] font-sans text-white selection:bg-[#7834c8]/40 selection:text-white">
       {/* =====================================================
-          AMBIENT BACKGROUND
+          AMBIENT BACKGROUND & GRID
       ====================================================== */}
-
       <div className="pointer-events-none fixed inset-0 z-0">
-
-        <div className="absolute left-[10%] top-[20%] h-[400px] w-[400px] rounded-full bg-yellow-500/[0.035] blur-[150px]" />
-
-        <div className="absolute right-[5%] top-[50%] h-[500px] w-[500px] rounded-full bg-yellow-500/[0.025] blur-[170px]" />
-
+        <div className="absolute left-[5%] top-[10%] h-[500px] w-[500px] rounded-full bg-[#7834c8]/15 blur-[180px]" />
+        <div className="absolute right-[5%] top-[40%] h-[600px] w-[600px] rounded-full bg-[#7834c8]/10 blur-[200px]" />
+        
+        {/* Premium Grid */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px)",
+            backgroundSize: "80px 80px",
+          }}
+        />
       </div>
-
 
       {/* =====================================================
           NAVBAR
       ====================================================== */}
-
       <div className="relative z-50 px-4 pt-6 sm:px-8">
-
         <div className="mx-auto max-w-7xl">
-
           <Navbar />
-
         </div>
-
       </div>
-
 
       {/* =====================================================
           HERO
       ====================================================== */}
-
       <section className="relative z-10 min-h-[85vh]">
-
         <div className="mx-auto flex max-w-7xl items-center px-6 py-28 sm:px-10 md:min-h-[80vh] md:px-16">
-
           <div className="max-w-6xl">
-
             {/* EYEBROW */}
-
-            <div className="mb-7 flex items-center gap-4">
-
-              <div className="h-px w-12 bg-yellow-400" />
-
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white">
+            <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[#7834c8]/50 bg-gradient-to-r from-[#7834c8]/20 to-transparent px-5 py-2.5 backdrop-blur-md">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-purple-400 opacity-75"></span>
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-purple-300 shadow-[0_0_10px_#7834c8]"></span>
+              </span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.35em] text-purple-200">
                 Upcoming Collection
               </span>
-
             </div>
 
-
             {/* HEADING */}
-
-            <h1 className="font-stacksansnotch text-[52px] font-medium leading-[1.02] tracking-tight text-white sm:text-[68px] md:text-[84px] lg:text-[100px]">
-
+            <h1 className="font-stacksansnotch text-[52px] font-extrabold leading-[1.05] tracking-tight text-white sm:text-[68px] md:text-[84px] lg:text-[100px]">
               Choose what
               <br />
-
-              <span className="text-gray-400">
+              <span className="bg-gradient-to-br from-white via-white to-purple-500 bg-clip-text text-transparent">
                 comes next.
               </span>
-
             </h1>
 
-
             {/* DESCRIPTION */}
-
-            <p className="mt-8 max-w-[620px] text-base font-light leading-relaxed text-gray-400 sm:text-lg">
-
+            <p className="mt-8 max-w-[620px] text-base leading-relaxed text-white/70 sm:text-lg md:leading-loose">
               We're exploring our next collection of watches and wearable
               technology. Tell us what you're interested in and help us decide
               what comes next.
-
             </p>
 
-
             {/* BUTTONS */}
-
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-
+            <div className="mt-12 flex flex-wrap items-center gap-5">
               <button
                 onClick={scrollToCollection}
-                className="group inline-flex items-center gap-4 rounded-full bg-white px-7 py-4 text-xs font-bold uppercase tracking-[0.1em] text-black transition-all duration-300 hover:bg-yellow-400"
+                className="group inline-flex items-center gap-4 rounded-full bg-gradient-to-r from-[#7834c8] to-[#6127a3] px-9 py-4 text-xs font-bold uppercase tracking-[0.15em] text-white shadow-[0_10px_40px_rgba(120,52,200,.3)] transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_15px_60px_rgba(120,52,200,.5)] hover:ring-2 hover:ring-purple-400/50"
               >
-
                 Explore Collection
-
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-black/10 text-lg transition-transform duration-300 group-hover:translate-x-1">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-lg transition-transform duration-300 group-hover:translate-x-1.5 backdrop-blur-sm">
                   →
                 </span>
-
               </button>
 
-
-              <div className="flex items-center gap-3 rounded-full border border-white/10 px-6 py-4">
-
-                <span className="h-1.5 w-1.5 rounded-full bg-yellow-400" />
-
-                <span className="text-[10px] uppercase tracking-[0.15em] text-gray-400">
+              <div className="flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-7 py-4 backdrop-blur-md">
+                <span className="h-2 w-2 rounded-full bg-purple-400 shadow-[0_0_10px_#7834c8]" />
+                <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-white/70">
                   No payment required
                 </span>
-
               </div>
-
             </div>
-
 
             {/* HERO INFO */}
-
-            <div className="mt-16 flex flex-wrap gap-x-10 gap-y-5 border-t border-white/10 pt-6">
-
+            <div className="mt-20 flex flex-wrap gap-x-14 gap-y-8 border-t border-white/10 pt-8">
               <div>
-
-                <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-600">
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
                   Registration
                 </p>
-
-                <p className="mt-1 text-xs text-gray-400">
+                <p className="mt-2 text-sm font-semibold text-white/90">
                   Free
                 </p>
-
               </div>
 
-
               <div>
-
-                <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-600">
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
                   Payment
                 </p>
-
-                <p className="mt-1 text-xs text-gray-400">
+                <p className="mt-2 text-sm font-semibold text-white/90">
                   Not Required
                 </p>
-
               </div>
-
 
               <div>
-
-                <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-600">
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
                   Status
                 </p>
-
-                <p className="mt-1 text-xs text-yellow-500">
+                <p className="mt-2 text-sm font-bold text-purple-400 drop-shadow-[0_0_15px_rgba(120,52,200,0.5)]">
                   Coming Soon
                 </p>
-
               </div>
-
             </div>
-
           </div>
-
         </div>
-
       </section>
-
 
       {/* =====================================================
           STATEMENT SECTION
       ====================================================== */}
-
-      <section className="relative z-10 border-y border-white/[0.07] bg-[#080808]">
-
+      <section className="relative z-10 border-y border-white/[0.05] bg-black/40 backdrop-blur-xl">
         <div className="mx-auto max-w-7xl px-6 py-24 sm:px-10 md:px-16 md:py-32">
-
           <div className="grid gap-12 md:grid-cols-[1fr_1.5fr] md:items-end">
-
             <div>
-
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-500">
+              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-purple-400">
                 Your Demand
               </p>
-
-              <p className="mt-4 text-sm leading-6 text-gray-500">
-                We want to know what you want before we decide what comes
-                next.
+              <p className="mt-5 text-base leading-relaxed text-white/60">
+                We want to know what you want before we decide what comes next.
               </p>
-
             </div>
 
-
-            <h2 className="font-stacksansnotch text-4xl font-medium leading-[1.05] tracking-tight text-white sm:text-5xl md:text-7xl">
-
+            <h2 className="font-stacksansnotch text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-7xl">
               You choose.
               <br />
-
-              <span className="text-gray-600">
-                We source.
-              </span>
-
+              <span className="text-white/30">We source.</span>
             </h2>
-
           </div>
-
         </div>
-
       </section>
-
 
       {/* =====================================================
           COLLECTION
       ====================================================== */}
-
-      <section
-        id="collection"
-        className="relative z-10 px-6 py-24 sm:px-10 md:px-16 md:py-32"
-      >
-
+      <section id="collection" className="relative z-10 px-6 py-24 sm:px-10 md:px-16 md:py-32">
         <div className="mx-auto max-w-7xl">
-
           {/* HEADER */}
-
-          <div className="mb-14 flex flex-col justify-between gap-8 md:flex-row md:items-end">
-
+          <div className="mb-16 flex flex-col justify-between gap-8 md:flex-row md:items-end">
             <div>
-
-              <div className="mb-4 flex items-center gap-3">
-
-                <div className="h-px w-8 bg-yellow-500" />
-
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-500">
+              <div className="mb-5 flex items-center gap-4">
+                <div className="h-px w-10 bg-gradient-to-r from-[#7834c8] to-transparent" />
+                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-purple-400">
                   What we're exploring
                 </p>
-
               </div>
-
-              <h2 className="font-stacksansnotch text-4xl font-medium tracking-tight sm:text-5xl md:text-6xl">
+              <h2 className="font-stacksansnotch text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
                 Upcoming Products
               </h2>
-
             </div>
 
-
-            <p className="max-w-md text-sm leading-6 text-gray-500">
-
+            <p className="max-w-md text-base leading-relaxed text-white/70">
               Choose a category that interests you. Register your preference
-              and we'll keep you updated when the collection becomes
-              available.
-
+              and we'll keep you updated when the collection becomes available.
             </p>
-
           </div>
 
-
           {/* PRODUCTS */}
-
-          <div className="grid gap-5 md:grid-cols-2">
-
+          <div className="grid gap-8 md:grid-cols-2">
             {products.map((product, index) => (
-
               <article
                 key={product.id}
-                className="group relative overflow-hidden rounded-3xl border border-white/10 bg-[#0a0a0a] shadow-2xl transition-all duration-500 hover:-translate-y-1 hover:border-yellow-500/40"
+                className="group relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#0a0a0a]/80 shadow-[0_20px_40px_rgba(0,0,0,0.5)] backdrop-blur-3xl transition-all duration-500 hover:-translate-y-2 hover:border-[#7834c8]/60 hover:shadow-[0_30px_60px_rgba(120,52,200,0.15)]"
               >
-
                 {/* IMAGE */}
-
                 <div className="relative aspect-[16/10] overflow-hidden">
-
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="absolute inset-0 h-full w-full object-cover opacity-50 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-65"
+                    className="absolute inset-0 h-full w-full object-cover opacity-60 transition-all duration-700 group-hover:scale-105 group-hover:opacity-40"
                   />
-
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-
+                  {/* Purple subtle overlay on hover */}
+                  <div className="absolute inset-0 bg-[#7834c8]/0 transition-colors duration-500 group-hover:bg-[#7834c8]/20" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent" />
 
                   {/* NUMBER */}
-
-                  <div className="absolute left-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/40 backdrop-blur-md">
-
-                    <span className="text-[9px] font-bold text-gray-400">
+                  <div className="absolute left-6 top-6 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/40 backdrop-blur-md transition-colors group-hover:border-[#7834c8]/50">
+                    <span className="text-[10px] font-extrabold text-white">
                       0{index + 1}
                     </span>
-
                   </div>
-
 
                   {/* STATUS */}
-
-                  <div className="absolute right-5 top-5">
-
-                    <span className="rounded-full border border-yellow-500/20 bg-black/50 px-4 py-2 text-[9px] font-bold uppercase tracking-[0.18em] text-yellow-500 backdrop-blur-md">
+                  <div className="absolute right-6 top-6">
+                    <span className="rounded-full border border-purple-400/30 bg-black/60 px-5 py-2.5 text-[9px] font-bold uppercase tracking-[0.2em] text-purple-300 backdrop-blur-md">
                       Coming Soon
                     </span>
-
                   </div>
-
 
                   {/* IMAGE TITLE */}
-
-                  <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-7">
-
-                    <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-400">
+                  <div className="absolute bottom-0 left-0 right-0 p-8">
+                    <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.25em] text-purple-400">
                       {product.category}
                     </p>
-
-                    <h3 className="font-stacksansnotch text-2xl font-medium leading-tight text-white sm:text-3xl">
+                    <h3 className="font-stacksansnotch text-3xl font-bold leading-tight text-white sm:text-4xl drop-shadow-md">
                       {product.name}
                     </h3>
-
                   </div>
-
                 </div>
 
-
                 {/* CONTENT */}
-
-                <div className="p-6 sm:p-7">
-
-                  <p className="text-sm font-medium text-gray-300">
+                <div className="p-8 pt-4">
+                  <p className="text-base font-semibold text-white/90">
                     {product.subtitle}
                   </p>
-
-                  <p className="mt-3 text-xs leading-6 text-gray-500 sm:text-sm">
+                  <p className="mt-3 text-sm leading-relaxed text-white/60">
                     {product.description}
                   </p>
 
-
                   {/* FOOTER */}
-
-                  <div className="mt-7 flex items-center justify-between border-t border-white/10 pt-5">
-
-                    <span className="text-[9px] uppercase tracking-[0.18em] text-gray-600">
+                  <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-6">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
                       Register your interest
                     </span>
 
-
                     <button
                       onClick={() => handleRegister(product.name)}
-                      className="group/button inline-flex items-center gap-3 rounded-full bg-white px-5 py-3 text-[10px] font-bold uppercase tracking-[0.12em] text-black transition-all duration-300 hover:bg-yellow-400"
+                      className="group/button inline-flex items-center gap-3 rounded-full bg-white px-6 py-3.5 text-[10px] font-bold uppercase tracking-[0.15em] text-black transition-all duration-300 hover:bg-gradient-to-r hover:from-[#7834c8] hover:to-[#6127a3] hover:text-white hover:shadow-[0_0_20px_rgba(120,52,200,0.4)] hover:ring-2 hover:ring-purple-400/50"
                     >
-
                       Register
-
-                      <span className="text-base transition-transform duration-300 group-hover/button:translate-x-1">
+                      <span className="text-base transition-transform duration-300 group-hover/button:translate-x-1.5">
                         →
                       </span>
-
                     </button>
-
                   </div>
-
                 </div>
-
               </article>
-
             ))}
-
           </div>
-
         </div>
-
       </section>
-
 
       {/* =====================================================
           HOW IT WORKS
       ====================================================== */}
-
-      <section className="relative z-10 bg-[#080808] px-6 py-24 sm:px-10 md:px-16 md:py-32">
-
+      <section className="relative z-10 bg-black/40 backdrop-blur-2xl px-6 py-24 sm:px-10 md:px-16 md:py-32 border-y border-white/[0.05]">
         <div className="mx-auto max-w-7xl">
-
-          <div className="grid gap-14 md:grid-cols-[0.8fr_1.2fr]">
-
+          <div className="grid gap-16 md:grid-cols-[0.85fr_1.15fr]">
             {/* LEFT */}
-
             <div>
-
-              <div className="flex items-center gap-3">
-
-                <div className="h-px w-8 bg-yellow-500" />
-
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-500">
+              <div className="flex items-center gap-4">
+                <div className="h-px w-10 bg-gradient-to-r from-[#7834c8] to-transparent" />
+                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-purple-400">
                   Simple Process
                 </p>
-
               </div>
-
-              <h2 className="mt-5 font-stacksansnotch text-4xl font-medium leading-tight tracking-tight sm:text-5xl md:text-6xl">
-
+              <h2 className="mt-6 font-stacksansnotch text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
                 Tell us.
                 <br />
-
-                <span className="text-gray-600">
-                  We'll take it from there.
-                </span>
-
+                <span className="text-white/40">We'll take it from there.</span>
               </h2>
-
             </div>
 
-
             {/* RIGHT */}
-
             <div className="divide-y divide-white/10 border-y border-white/10">
-
               {[
                 {
                   number: "01",
@@ -486,168 +345,111 @@ const PreRegister = () => {
                   text: "We'll contact you when the selected collection becomes available.",
                 },
               ].map((step) => (
-
                 <div
                   key={step.number}
-                  className="group grid grid-cols-[45px_1fr] gap-5 py-7"
+                  className="group grid grid-cols-[50px_1fr] gap-6 py-8 transition-colors hover:bg-white/[0.02] -mx-6 px-6 rounded-2xl"
                 >
-
-                  <span className="text-[10px] font-bold text-yellow-500">
+                  <span className="text-sm font-extrabold text-purple-400 drop-shadow-[0_0_10px_rgba(120,52,200,0.5)]">
                     {step.number}
                   </span>
-
                   <div>
-
-                    <h3 className="text-base font-semibold text-white">
+                    <h3 className="text-lg font-bold text-white">
                       {step.title}
                     </h3>
-
-                    <p className="mt-2 max-w-lg text-sm leading-6 text-gray-500 transition-colors duration-300 group-hover:text-gray-300">
+                    <p className="mt-2.5 max-w-lg text-base leading-relaxed text-white/50 transition-colors duration-300 group-hover:text-white/80">
                       {step.text}
                     </p>
-
                   </div>
-
                 </div>
-
               ))}
-
             </div>
-
           </div>
-
         </div>
-
       </section>
-
 
       {/* =====================================================
           FINAL CTA
       ====================================================== */}
+      <section className="relative z-10 overflow-hidden bg-[#050505]">
+        {/* DECORATIVE GLOWS */}
+        <div className="pointer-events-none absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full border border-[#7834c8]/20 bg-[#7834c8]/5 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-40 left-10 h-[600px] w-[600px] rounded-full bg-[#7834c8]/10 blur-[150px]" />
 
-      <section className="relative z-10 overflow-hidden border-t border-white/10 bg-[#0a0a0a]">
-
-        {/* DECORATIVE CIRCLES */}
-
-        <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full border border-yellow-500/10" />
-
-        <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full border border-yellow-500/10" />
-
-        <div className="pointer-events-none absolute -bottom-40 left-10 h-80 w-80 rounded-full bg-yellow-500/[0.025] blur-[120px]" />
-
-
-        <div className="relative mx-auto max-w-7xl px-6 py-28 text-center sm:px-10 md:px-16 md:py-36">
-
-          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-500">
+        <div className="relative mx-auto max-w-7xl px-6 py-32 text-center sm:px-10 md:px-16 md:py-48">
+          <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-purple-400">
             Pre-Registration
           </p>
 
-          <h2 className="mx-auto mt-5 max-w-5xl font-stacksansnotch text-5xl font-medium leading-[1] tracking-tight sm:text-6xl md:text-8xl">
-
+          <h2 className="mx-auto mt-6 max-w-5xl font-stacksansnotch text-5xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-8xl">
             Your demand.
             <br />
-
-            <span className="text-gray-600">
+            <span className="bg-gradient-to-br from-white/40 to-white/10 bg-clip-text text-transparent">
               Our next collection.
             </span>
-
           </h2>
 
-          <p className="mx-auto mt-7 max-w-xl text-sm leading-7 text-gray-500">
+          <p className="mx-auto mt-8 max-w-xl text-base leading-relaxed text-white/60">
             Register your interest today. No payment. No purchase commitment.
             Just tell us what you'd like to see next.
           </p>
 
           <button
             onClick={scrollToCollection}
-            className="group mt-9 inline-flex items-center gap-4 rounded-full bg-white px-7 py-4 text-xs font-bold uppercase tracking-[0.1em] text-black transition-all duration-300 hover:bg-yellow-400"
+            className="group mt-12 inline-flex items-center gap-4 rounded-full bg-gradient-to-r from-[#7834c8] to-[#6127a3] px-9 py-4 text-xs font-bold uppercase tracking-[0.15em] text-white shadow-[0_10px_40px_rgba(120,52,200,.3)] transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_15px_60px_rgba(120,52,200,.5)] hover:ring-2 hover:ring-purple-400/50"
           >
-
             Explore Collection
-
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-black/10 text-lg transition-transform duration-300 group-hover:translate-x-1">
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-lg transition-transform duration-300 group-hover:translate-x-1.5 backdrop-blur-sm">
               →
             </span>
-
           </button>
-
         </div>
-
       </section>
-
 
       {/* =====================================================
           COLLABORATE
       ====================================================== */}
-
-      <section className="relative z-10 border-t border-white/10 bg-black">
-
+      <section className="relative z-10 border-t border-white/10 bg-[#050505]">
         <Collaborate />
-
       </section>
-
 
       {/* =====================================================
           FOOTER
       ====================================================== */}
-
-      <footer className="relative z-10 border-t border-white/10 bg-black px-6 py-10 sm:px-10 md:px-16">
-
-        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 md:flex-row md:items-end">
-
+      <footer className="relative z-10 border-t border-white/10 bg-[#050505] px-6 py-12 sm:px-10 md:px-16">
+        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-10 md:flex-row md:items-end">
           {/* BRAND */}
-
           <div>
-
-            <div className="flex items-center gap-3">
-
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-black">
-
-                <span className="text-[9px] font-bold">
+            <div className="flex items-center gap-4">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-white to-white/80 text-black shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                <span className="text-[10px] font-extrabold tracking-wider">
                   AE
                 </span>
-
               </div>
-
               <div>
-
-                <p className="text-xs font-semibold">
+                <p className="text-sm font-bold text-white">
                   Aditya Enterprises
                 </p>
-
-                <p className="text-[8px] uppercase tracking-[0.2em] text-gray-600">
+                <p className="text-[9px] font-bold uppercase tracking-[0.25em] text-white/50">
                   Techno Services
                 </p>
-
               </div>
-
             </div>
-
-            <p className="mt-4 text-[10px] text-gray-600">
+            <p className="mt-5 text-[11px] font-medium text-white/40">
               Grow your dreams.
             </p>
-
           </div>
-
 
           {/* RIGHT */}
-
           <div className="md:text-right">
-
-            <p className="text-[9px] uppercase tracking-[0.2em] text-gray-700">
+            <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/40">
               Upcoming Collection
             </p>
-
-            <p className="mt-2 text-xs text-gray-500">
+            <p className="mt-2.5 text-sm font-semibold text-white/80">
               Watches & Wearable Technology
             </p>
-
           </div>
-
         </div>
-
       </footer>
-
     </main>
   );
 };
