@@ -5,42 +5,42 @@ const products = [
   {
     id: "analog-watch",
     name: "Analog Watches",
-    shortName: "Analog",
-    subtitle: "Timeless design. Everyday style.",
+    category: "TIMELESS TECHNOLOGY",
+    subtitle: "Classic design. Modern selection.",
     description:
-      "Explore a curated collection of classic analog watches designed for everyday and formal wear.",
+      "Explore our upcoming selection of analog watches designed for everyday wear, professional settings, and timeless style.",
     image:
-      "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=1400&q=85",
   },
   {
     id: "smart-watch",
     name: "Smart Watches",
-    shortName: "Smart Watches",
+    category: "CONNECTED TECHNOLOGY",
     subtitle: "Technology on your wrist.",
     description:
-      "Modern smart watches built around connectivity, activity tracking and everyday convenience.",
+      "Discover upcoming smart watches combining connectivity, activity tracking, productivity, and everyday convenience.",
     image:
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1400&q=85",
   },
   {
     id: "smart-band",
     name: "Smart Bands",
-    shortName: "Smart Bands",
+    category: "FITNESS TECHNOLOGY",
     subtitle: "Track. Move. Improve.",
     description:
-      "Lightweight wearable technology designed for fitness, activity and everyday tracking.",
+      "Lightweight wearable technology designed for activity tracking, fitness, and everyday movement.",
     image:
-      "https://images.unsplash.com/photo-1557935728-e6d1eaabe558?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1557935728-e6d1eaabe558?auto=format&fit=crop&w=1400&q=85",
   },
   {
     id: "smart-ring",
     name: "Smart Rings",
-    shortName: "Smart Rings",
+    category: "WEARABLE TECHNOLOGY",
     subtitle: "Small form. Smart technology.",
     description:
-      "A new generation of compact wearable technology designed to fit naturally into everyday life.",
+      "Compact wearable technology designed to bring smart features into your everyday life without the bulk.",
     image:
-      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1400&q=85",
   },
 ];
 
@@ -60,205 +60,230 @@ const PreRegister = () => {
   };
 
   return (
-    <main className="min-h-screen overflow-hidden bg-black text-white">
+    <main className="min-h-screen overflow-hidden bg-black font-sans text-white">
 
       {/* =====================================================
-          GLOBAL AMBIENT GLOW
+          AMBIENT BACKGROUND
       ====================================================== */}
 
-      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+      <div className="pointer-events-none fixed inset-0 z-0">
 
-        <div className="absolute left-[15%] top-[15%] h-[500px] w-[500px] rounded-full bg-purple-700/20 blur-[180px]" />
+        <div className="absolute left-[10%] top-[20%] h-[400px] w-[400px] rounded-full bg-yellow-500/[0.035] blur-[150px]" />
 
-        <div className="absolute right-[5%] top-[35%] h-[450px] w-[450px] rounded-full bg-purple-600/10 blur-[180px]" />
-
-        <div className="absolute bottom-[5%] left-[35%] h-[500px] w-[500px] rounded-full bg-violet-700/10 blur-[200px]" />
+        <div className="absolute right-[5%] top-[50%] h-[500px] w-[500px] rounded-full bg-yellow-500/[0.025] blur-[170px]" />
 
       </div>
 
 
       {/* =====================================================
-          NAVIGATION
+          NAVBAR
       ====================================================== */}
 
-      <header className="relative z-50 px-5 pt-5 md:px-8">
+      <div className="relative z-50 px-4 pt-6 sm:px-8">
 
-        <div className="mx-auto flex max-w-7xl items-center justify-between">
+        <div className="mx-auto max-w-7xl">
 
-          {/* Logo */}
+          <div className="flex items-center justify-between">
 
-          <button
-            onClick={() => navigate("/")}
-            className="flex items-center gap-3"
-          >
+            {/* BRAND */}
 
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-black">
-              <span className="text-[10px] font-bold">
-                AE
-              </span>
-            </div>
+            <button
+              onClick={() => navigate("/")}
+              className="group flex items-center gap-3"
+            >
 
-            <div className="hidden sm:block text-left">
+              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-black transition-all duration-300 group-hover:bg-yellow-400">
 
-              <p className="text-[11px] font-semibold tracking-tight">
+                <span className="text-[10px] font-bold">
+                  AE
+                </span>
+
+              </div>
+
+              <div className="hidden text-left sm:block">
+
+                <p className="text-xs font-semibold tracking-tight text-white">
+                  Aditya Enterprises
+                </p>
+
+                <p className="mt-0.5 text-[8px] uppercase tracking-[0.2em] text-gray-500">
+                  Techno Services
+                </p>
+
+              </div>
+
+            </button>
+
+
+            {/* NAV */}
+
+            <nav className="hidden items-center gap-1 rounded-full border border-white/10 bg-black/40 p-1 backdrop-blur-xl md:flex">
+
+              <button
+                onClick={() => navigate("/")}
+                className="rounded-full px-5 py-2.5 text-[10px] uppercase tracking-[0.12em] text-gray-500 transition-all duration-300 hover:bg-white/10 hover:text-white"
+              >
+                Home
+              </button>
+
+              <button
+                onClick={() => navigate("/Portfolio")}
+                className="rounded-full px-5 py-2.5 text-[10px] uppercase tracking-[0.12em] text-gray-500 transition-all duration-300 hover:bg-white/10 hover:text-white"
+              >
+                Products
+              </button>
+
+              <button
+                className="rounded-full bg-white px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-black"
+              >
+                Pre-Register
+              </button>
+
+              <button
+                onClick={() => navigate("/Contact")}
+                className="rounded-full px-5 py-2.5 text-[10px] uppercase tracking-[0.12em] text-gray-500 transition-all duration-300 hover:bg-white/10 hover:text-white"
+              >
+                Contact
+              </button>
+
+            </nav>
+
+
+            {/* RIGHT SIDE */}
+
+            <div className="flex items-center gap-3">
+
+              <span className="hidden text-[9px] uppercase tracking-[0.2em] text-gray-600 lg:block">
                 Aditya Enterprises
-              </p>
+              </span>
 
-              <p className="text-[8px] uppercase tracking-[0.18em] text-white/35">
-                Techno Services
-              </p>
+              <div className="h-8 w-8 rounded-full border border-white/10 bg-white/[0.03]" />
 
             </div>
 
-          </button>
-
-
-          {/* Pill Navigation */}
-
-          <nav className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/[0.04] p-1 backdrop-blur-xl md:flex">
-
-            <button
-              onClick={() => navigate("/")}
-              className="rounded-full px-5 py-2 text-[10px] text-white/50 transition hover:bg-white/10 hover:text-white"
-            >
-              Products
-            </button>
-
-            <button
-              onClick={() => navigate("/")}
-              className="rounded-full px-5 py-2 text-[10px] text-white/50 transition hover:bg-white/10 hover:text-white"
-            >
-              Services
-            </button>
-
-            <button
-              className="rounded-full bg-white/10 px-5 py-2 text-[10px] text-white"
-            >
-              Pre-Register
-            </button>
-
-            <button
-              onClick={() => navigate("/")}
-              className="rounded-full px-5 py-2 text-[10px] text-white/50 transition hover:bg-white/10 hover:text-white"
-            >
-              Contact
-            </button>
-
-          </nav>
-
-
-          {/* Right circle */}
-
-          <div className="h-8 w-8 rounded-full border border-white/10 bg-white/[0.04]" />
+          </div>
 
         </div>
 
-      </header>
+      </div>
 
 
       {/* =====================================================
           HERO
       ====================================================== */}
 
-      <section className="relative z-10">
+      <section className="relative z-10 min-h-[85vh]">
 
-        <div className="mx-auto flex min-h-[85vh] max-w-7xl items-center px-6 py-20 md:px-10">
+        <div className="mx-auto flex max-w-7xl items-center px-6 py-28 sm:px-10 md:min-h-[80vh] md:px-16">
 
-          <div className="relative w-full">
+          <div className="max-w-6xl">
 
-            {/* Hero purple glow */}
+            {/* EYEBROW */}
 
-            <div className="pointer-events-none absolute left-[25%] top-[35%] h-[300px] w-[500px] rounded-full bg-purple-700/30 blur-[130px]" />
+            <div className="mb-7 flex items-center gap-4">
 
+              <div className="h-px w-12 bg-yellow-400" />
 
-            {/* Small eyebrow */}
-
-            <div className="relative mb-7 flex items-center gap-3">
-
-              <span className="h-px w-8 bg-purple-500" />
-
-              <p className="text-[9px] uppercase tracking-[0.3em] text-white/45">
-                Upcoming Collection · Watches · Wearables
-              </p>
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white">
+                Upcoming Collection
+              </span>
 
             </div>
 
 
-            {/* Heading */}
+            {/* HEADING */}
 
-            <h1 className="relative max-w-5xl text-[3.5rem] font-medium leading-[0.95] tracking-[-0.055em] sm:text-6xl md:text-8xl lg:text-[7.5rem]">
+            <h1 className="font-stacksansnotch text-[52px] font-medium leading-[1.02] tracking-tight text-white sm:text-[68px] md:text-[84px] lg:text-[100px]">
 
               Choose what
               <br />
 
-              <span className="bg-gradient-to-r from-white via-white to-purple-400 bg-clip-text text-transparent">
+              <span className="text-gray-400">
                 comes next.
               </span>
 
             </h1>
 
 
-            {/* Description */}
+            {/* DESCRIPTION */}
 
-            <div className="relative mt-8 flex max-w-2xl flex-col gap-7 md:flex-row md:items-end">
+            <p className="mt-8 max-w-[620px] text-base font-light leading-relaxed text-gray-400 sm:text-lg">
 
-              <p className="max-w-xl text-sm leading-7 text-white/40">
-                We are exploring a new collection of watches and wearable
-                technology. Tell us what interests you and help shape what
-                comes next.
-              </p>
+              We're exploring our next collection of watches and wearable
+              technology. Tell us what you're interested in and help us decide
+              what comes next.
+
+            </p>
+
+
+            {/* BUTTONS */}
+
+            <div className="mt-10 flex flex-wrap items-center gap-4">
 
               <button
                 onClick={scrollToCollection}
-                className="group flex w-fit items-center gap-3 whitespace-nowrap text-[10px] uppercase tracking-[0.2em] text-white"
+                className="group inline-flex items-center gap-4 rounded-full bg-white px-7 py-4 text-xs font-bold uppercase tracking-[0.1em] text-black transition-all duration-300 hover:bg-yellow-400"
               >
 
-                <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] transition group-hover:border-purple-500/60 group-hover:bg-purple-600/20">
-                  ↓
+                Explore Collection
+
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-black/10 text-lg transition-transform duration-300 group-hover:translate-x-1">
+                  →
                 </span>
 
-                Explore
-
               </button>
+
+
+              <div className="flex items-center gap-3 rounded-full border border-white/10 px-6 py-4">
+
+                <span className="h-1.5 w-1.5 rounded-full bg-yellow-400" />
+
+                <span className="text-[10px] uppercase tracking-[0.15em] text-gray-400">
+                  No payment required
+                </span>
+
+              </div>
 
             </div>
 
 
-            {/* Hero bottom info */}
+            {/* HERO INFO */}
 
-            <div className="relative mt-16 flex flex-wrap items-center gap-x-10 gap-y-4 border-t border-white/[0.07] pt-6">
+            <div className="mt-16 flex flex-wrap gap-x-10 gap-y-5 border-t border-white/10 pt-6">
 
               <div>
 
-                <p className="text-[9px] uppercase tracking-[0.2em] text-white/25">
+                <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-600">
                   Registration
                 </p>
 
-                <p className="mt-1 text-xs text-white/60">
-                  Completely Free
+                <p className="mt-1 text-xs text-gray-400">
+                  Free
                 </p>
 
               </div>
 
+
               <div>
 
-                <p className="text-[9px] uppercase tracking-[0.2em] text-white/25">
+                <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-600">
                   Payment
                 </p>
 
-                <p className="mt-1 text-xs text-white/60">
+                <p className="mt-1 text-xs text-gray-400">
                   Not Required
                 </p>
 
               </div>
 
+
               <div>
 
-                <p className="text-[9px] uppercase tracking-[0.2em] text-white/25">
-                  Availability
+                <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-600">
+                  Status
                 </p>
 
-                <p className="mt-1 text-xs text-white/60">
+                <p className="mt-1 text-xs text-yellow-500">
                   Coming Soon
                 </p>
 
@@ -274,37 +299,41 @@ const PreRegister = () => {
 
 
       {/* =====================================================
-          PURPLE INTRO SECTION
+          STATEMENT SECTION
       ====================================================== */}
 
-      <section className="relative z-10 overflow-hidden bg-gradient-to-b from-purple-700 via-purple-700 to-purple-900">
+      <section className="relative z-10 border-y border-white/[0.07] bg-[#080808]">
 
-        {/* Glow */}
+        <div className="mx-auto max-w-7xl px-6 py-24 sm:px-10 md:px-16 md:py-32">
 
-        <div className="absolute left-1/2 top-1/2 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-400/20 blur-[150px]" />
+          <div className="grid gap-12 md:grid-cols-[1fr_1.5fr] md:items-end">
 
-        <div className="relative mx-auto max-w-7xl px-6 py-28 md:px-10 md:py-36">
+            <div>
 
-          <p className="text-[9px] uppercase tracking-[0.35em] text-white/50">
-            Your choice matters
-          </p>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-500">
+                Your Demand
+              </p>
 
-          <h2 className="mt-6 max-w-5xl text-4xl font-medium leading-[1] tracking-[-0.045em] sm:text-5xl md:text-7xl">
+              <p className="mt-4 text-sm leading-6 text-gray-500">
+                We want to know what you want before we decide what comes
+                next.
+              </p>
 
-            You choose.
-            <br />
+            </div>
 
-            <span className="text-white/45">
-              We source.
-            </span>
 
-          </h2>
+            <h2 className="font-stacksansnotch text-4xl font-medium leading-[1.05] tracking-tight text-white sm:text-5xl md:text-7xl">
 
-          <p className="mt-8 max-w-xl text-sm leading-7 text-white/55">
-            Your interest helps us understand what people actually want.
-            Register for a category and we'll keep you updated when the
-            collection becomes available.
-          </p>
+              You choose.
+              <br />
+
+              <span className="text-gray-600">
+                We source.
+              </span>
+
+            </h2>
+
+          </div>
 
         </div>
 
@@ -317,36 +346,46 @@ const PreRegister = () => {
 
       <section
         id="collection"
-        className="relative z-10 px-6 py-24 md:px-10 md:py-32"
+        className="relative z-10 px-6 py-24 sm:px-10 md:px-16 md:py-32"
       >
 
         <div className="mx-auto max-w-7xl">
 
-          {/* Section heading */}
+          {/* HEADER */}
 
-          <div className="mb-14 flex flex-col justify-between gap-7 md:flex-row md:items-end">
+          <div className="mb-14 flex flex-col justify-between gap-8 md:flex-row md:items-end">
 
             <div>
 
-              <p className="text-[9px] uppercase tracking-[0.35em] text-purple-400">
-                Upcoming Products
-              </p>
+              <div className="mb-4 flex items-center gap-3">
 
-              <h2 className="mt-4 text-4xl font-medium tracking-[-0.04em] sm:text-5xl md:text-6xl">
-                Find your next.
+                <div className="h-px w-8 bg-yellow-500" />
+
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-500">
+                  What we're exploring
+                </p>
+
+              </div>
+
+              <h2 className="font-stacksansnotch text-4xl font-medium tracking-tight sm:text-5xl md:text-6xl">
+                Upcoming Products
               </h2>
 
             </div>
 
-            <p className="max-w-sm text-sm leading-6 text-white/35">
-              Select a category you're interested in and register your
-              preference. No payment or purchase commitment is required.
+
+            <p className="max-w-md text-sm leading-6 text-gray-500">
+
+              Choose a category that interests you. Register your preference
+              and we'll keep you updated when the collection becomes
+              available.
+
             </p>
 
           </div>
 
 
-          {/* Product grid */}
+          {/* PRODUCTS */}
 
           <div className="grid gap-5 md:grid-cols-2">
 
@@ -354,86 +393,93 @@ const PreRegister = () => {
 
               <article
                 key={product.id}
-                className="group relative overflow-hidden rounded-[1.7rem] border border-white/[0.08] bg-white/[0.035] transition-all duration-500 hover:-translate-y-1 hover:border-purple-500/30 hover:bg-white/[0.055]"
+                className="group relative overflow-hidden rounded-3xl border border-white/10 bg-[#0a0a0a] shadow-2xl transition-all duration-500 hover:-translate-y-1 hover:border-yellow-500/40"
               >
 
-                {/* Image */}
+                {/* IMAGE */}
 
                 <div className="relative aspect-[16/10] overflow-hidden">
 
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="h-full w-full object-cover opacity-75 grayscale-[15%] transition duration-700 group-hover:scale-105 group-hover:opacity-90"
+                    className="absolute inset-0 h-full w-full object-cover opacity-50 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-65"
                   />
 
-                  {/* Image gradient */}
-
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#080609] via-transparent to-black/10" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
 
 
-                  {/* Purple glow */}
+                  {/* NUMBER */}
 
-                  <div className="absolute -bottom-20 left-1/2 h-40 w-60 -translate-x-1/2 rounded-full bg-purple-700/30 blur-[70px] transition duration-500 group-hover:bg-purple-600/50" />
+                  <div className="absolute left-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/40 backdrop-blur-md">
 
-
-                  {/* Number */}
-
-                  <div className="absolute left-5 top-5 flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-black/20 backdrop-blur-md">
-
-                    <span className="text-[9px] text-white/60">
+                    <span className="text-[9px] font-bold text-gray-400">
                       0{index + 1}
                     </span>
 
                   </div>
 
 
-                  {/* Status */}
+                  {/* STATUS */}
 
                   <div className="absolute right-5 top-5">
 
-                    <span className="rounded-full border border-white/10 bg-black/30 px-3 py-1.5 text-[8px] uppercase tracking-[0.2em] text-white/60 backdrop-blur-md">
+                    <span className="rounded-full border border-yellow-500/20 bg-black/50 px-4 py-2 text-[9px] font-bold uppercase tracking-[0.18em] text-yellow-500 backdrop-blur-md">
                       Coming Soon
                     </span>
+
+                  </div>
+
+
+                  {/* IMAGE TITLE */}
+
+                  <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-7">
+
+                    <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-400">
+                      {product.category}
+                    </p>
+
+                    <h3 className="font-stacksansnotch text-2xl font-medium leading-tight text-white sm:text-3xl">
+
+                      {product.name}
+
+                    </h3>
 
                   </div>
 
                 </div>
 
 
-                {/* Card content */}
+                {/* CONTENT */}
 
-                <div className="p-7 md:p-8">
+                <div className="p-6 sm:p-7">
 
-                  <p className="text-[9px] uppercase tracking-[0.25em] text-purple-400">
+                  <p className="text-sm font-medium text-gray-300">
                     {product.subtitle}
                   </p>
 
-                  <h3 className="mt-3 text-2xl font-medium tracking-[-0.025em]">
-                    {product.name}
-                  </h3>
-
-                  <p className="mt-4 max-w-lg text-sm leading-6 text-white/35">
+                  <p className="mt-3 text-xs leading-6 text-gray-500 sm:text-sm">
                     {product.description}
                   </p>
 
 
-                  {/* Button */}
+                  {/* FOOTER */}
 
-                  <div className="mt-7 flex items-center justify-between border-t border-white/[0.07] pt-6">
+                  <div className="mt-7 flex items-center justify-between border-t border-white/10 pt-5">
 
-                    <span className="text-[9px] uppercase tracking-[0.18em] text-white/25">
-                      Register interest
+                    <span className="text-[9px] uppercase tracking-[0.18em] text-gray-600">
+                      Register your interest
                     </span>
+
 
                     <button
                       onClick={() => handleRegister(product.name)}
-                      className="group/button flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.06] px-5 py-2.5 text-[9px] font-medium uppercase tracking-[0.18em] transition-all duration-300 hover:border-purple-500/50 hover:bg-purple-600/20"
+                      className="group/button inline-flex items-center gap-3 rounded-full bg-white px-5 py-3 text-[10px] font-bold uppercase tracking-[0.12em] text-black transition-all duration-300 hover:bg-yellow-400"
                     >
 
                       Register
 
-                      <span className="transition-transform duration-300 group-hover/button:translate-x-1">
+                      <span className="text-base transition-transform duration-300 group-hover/button:translate-x-1">
                         →
                       </span>
 
@@ -458,75 +504,83 @@ const PreRegister = () => {
           HOW IT WORKS
       ====================================================== */}
 
-      <section className="relative z-10 border-t border-white/[0.06] px-6 py-24 md:px-10 md:py-32">
+      <section className="relative z-10 bg-[#080808] px-6 py-24 sm:px-10 md:px-16 md:py-32">
 
         <div className="mx-auto max-w-7xl">
 
           <div className="grid gap-14 md:grid-cols-[0.8fr_1.2fr]">
 
-            {/* Left */}
+            {/* LEFT */}
 
             <div>
 
-              <p className="text-[9px] uppercase tracking-[0.35em] text-purple-400">
-                How it works
-              </p>
+              <div className="flex items-center gap-3">
 
-              <h2 className="mt-5 text-4xl font-medium leading-tight tracking-[-0.04em] md:text-5xl">
-                Simple.
+                <div className="h-px w-8 bg-yellow-500" />
+
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-500">
+                  Simple Process
+                </p>
+
+              </div>
+
+              <h2 className="mt-5 font-stacksansnotch text-4xl font-medium leading-tight tracking-tight sm:text-5xl md:text-6xl">
+
+                Tell us.
                 <br />
 
-                <span className="text-white/30">
-                  No commitment.
+                <span className="text-gray-600">
+                  We'll take it from there.
                 </span>
+
               </h2>
 
             </div>
 
 
-            {/* Steps */}
+            {/* RIGHT */}
 
-            <div className="divide-y divide-white/[0.07] border-y border-white/[0.07]">
+            <div className="divide-y divide-white/10 border-y border-white/10">
 
               {[
                 {
                   number: "01",
                   title: "Choose",
-                  text: "Select the product category that interests you.",
+                  text: "Select the product category you're interested in.",
                 },
                 {
                   number: "02",
                   title: "Register",
-                  text: "Share your details and preferred category with us.",
+                  text: "Share your details and tell us what you're looking for.",
                 },
                 {
                   number: "03",
                   title: "We source",
-                  text: "Your demand helps us plan our upcoming collection.",
+                  text: "Your interest helps us plan our upcoming collection.",
                 },
                 {
                   number: "04",
                   title: "Get notified",
-                  text: "We'll let you know when the collection becomes available.",
+                  text: "We'll contact you when the selected collection becomes available.",
                 },
               ].map((step) => (
 
                 <div
                   key={step.number}
-                  className="group grid grid-cols-[50px_1fr] gap-5 py-7"
+                  className="group grid grid-cols-[45px_1fr] gap-5 py-7"
                 >
 
-                  <span className="text-[10px] text-purple-400/70">
+                  <span className="text-[10px] font-bold text-yellow-500">
                     {step.number}
                   </span>
 
                   <div>
 
-                    <h3 className="text-base font-medium">
+                    <h3 className="text-base font-semibold text-white">
                       {step.title}
                     </h3>
 
-                    <p className="mt-2 text-sm leading-6 text-white/30 transition group-hover:text-white/45">
+                    <p className="mt-2 max-w-lg text-sm leading-6 text-gray-500 transition-colors duration-300 group-hover:text-gray-300">
                       {step.text}
                     </p>
 
@@ -549,40 +603,47 @@ const PreRegister = () => {
           FINAL CTA
       ====================================================== */}
 
-      <section className="relative z-10 overflow-hidden bg-gradient-to-b from-purple-900 via-purple-700 to-purple-800">
+      <section className="relative z-10 overflow-hidden border-t border-white/10 bg-[#0a0a0a]">
 
-        <div className="absolute left-1/2 top-1/2 h-[500px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-300/20 blur-[160px]" />
+        {/* Decorative circles */}
 
-        <div className="relative mx-auto max-w-7xl px-6 py-28 text-center md:px-10 md:py-36">
+        <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full border border-yellow-500/10" />
 
-          <p className="text-[9px] uppercase tracking-[0.35em] text-white/45">
+        <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full border border-yellow-500/10" />
+
+        <div className="pointer-events-none absolute -bottom-40 left-10 h-80 w-80 rounded-full bg-yellow-500/[0.025] blur-[120px]" />
+
+
+        <div className="relative mx-auto max-w-7xl px-6 py-28 text-center sm:px-10 md:px-16 md:py-36">
+
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-500">
             Pre-Registration
           </p>
 
-          <h2 className="mx-auto mt-6 max-w-5xl text-5xl font-medium leading-[0.95] tracking-[-0.05em] sm:text-6xl md:text-8xl">
+          <h2 className="mx-auto mt-5 max-w-5xl font-stacksansnotch text-5xl font-medium leading-[1] tracking-tight sm:text-6xl md:text-8xl">
 
             Your demand.
             <br />
 
-            <span className="text-white/45">
+            <span className="text-gray-600">
               Our next collection.
             </span>
 
           </h2>
 
-          <p className="mx-auto mt-8 max-w-xl text-sm leading-7 text-white/55">
-            Tell us what you want to see next. Registration is free and
-            requires no payment.
+          <p className="mx-auto mt-7 max-w-xl text-sm leading-7 text-gray-500">
+            Register your interest today. No payment. No purchase commitment.
+            Just tell us what you'd like to see next.
           </p>
 
           <button
             onClick={scrollToCollection}
-            className="group mt-9 inline-flex items-center gap-4 rounded-full bg-white px-7 py-3.5 text-[9px] font-semibold uppercase tracking-[0.2em] text-black transition-all duration-300 hover:bg-white/90"
+            className="group mt-9 inline-flex items-center gap-4 rounded-full bg-white px-7 py-4 text-xs font-bold uppercase tracking-[0.1em] text-black transition-all duration-300 hover:bg-yellow-400"
           >
 
             Explore Collection
 
-            <span className="transition-transform duration-300 group-hover:translate-x-1">
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-black/10 text-lg transition-transform duration-300 group-hover:translate-x-1">
               →
             </span>
 
@@ -597,41 +658,55 @@ const PreRegister = () => {
           FOOTER
       ====================================================== */}
 
-      <footer className="relative z-10 border-t border-white/[0.07] bg-black px-6 py-10 md:px-10">
+      <footer className="relative z-10 border-t border-white/10 bg-black px-6 py-10 sm:px-10 md:px-16">
 
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 md:flex-row md:items-end">
+
+          {/* BRAND */}
 
           <div>
 
             <div className="flex items-center gap-3">
 
-              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-black">
-                <span className="text-[8px] font-bold">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-black">
+
+                <span className="text-[9px] font-bold">
                   AE
                 </span>
+
               </div>
 
-              <p className="text-xs font-medium">
-                Aditya Enterprises
-              </p>
+              <div>
+
+                <p className="text-xs font-semibold">
+                  Aditya Enterprises
+                </p>
+
+                <p className="text-[8px] uppercase tracking-[0.2em] text-gray-600">
+                  Techno Services
+                </p>
+
+              </div>
 
             </div>
 
-            <p className="mt-4 max-w-xs text-[10px] leading-5 text-white/25">
-              Technology, products and services built around your needs.
+            <p className="mt-4 text-[10px] text-gray-600">
+              Grow your dreams.
             </p>
 
           </div>
 
 
-          <div className="text-left md:text-right">
+          {/* RIGHT */}
 
-            <p className="text-[9px] uppercase tracking-[0.25em] text-white/20">
-              Aditya (Techno Services)
+          <div className="md:text-right">
+
+            <p className="text-[9px] uppercase tracking-[0.2em] text-gray-700">
+              Upcoming Collection
             </p>
 
-            <p className="mt-2 text-xs text-white/35">
-              Grow your dreams.
+            <p className="mt-2 text-xs text-gray-500">
+              Watches & Wearable Technology
             </p>
 
           </div>
