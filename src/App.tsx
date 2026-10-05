@@ -23,6 +23,7 @@ import ProductView from "./pages/ProductView";
 import Machines from "./pages/Machines";
 import PreRegister from "./pages/Pre-register";
 import PreRegisterForm from "./pages/PreRegisterForm";
+import ProductDetails from "./pages/ProductDetails";
 import AdminPreRegistrations from "./pages/AdminPreRegistrations";
 
 const queryClient = new QueryClient();
@@ -37,6 +38,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/AboutPage" element={<AboutPage />} />
+            <Route path="/ProductDetails" element={<ProductDetails />} />
             <Route path="/Contact" element={<Contact />} />
             <Route path="/ServicesSection" element={<ServicesSection />} />
             <Route path="/Portfolio" element={<Portfolio />} />
