@@ -214,17 +214,17 @@ const AdminPreRegistrations = () => {
   const getStatusStyle = (status: string) => {
     switch (status) {
       case "contacted":
-        return "border-blue-400/30 bg-blue-400/10 text-blue-300";
+        return "border-blue-200 bg-blue-50 text-blue-700";
 
       case "converted":
-        return "border-emerald-400/30 bg-emerald-400/10 text-emerald-300";
+        return "border-emerald-200 bg-emerald-50 text-emerald-700";
 
       case "closed":
-        return "border-red-400/30 bg-red-400/10 text-red-300";
+        return "border-red-200 bg-red-50 text-red-700";
 
       case "new":
       default:
-        return "border-[#7834c8]/40 bg-[#7834c8]/15 text-purple-300";
+        return "border-purple-200 bg-purple-50 text-purple-700";
     }
   };
 
@@ -253,10 +253,10 @@ const AdminPreRegistrations = () => {
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-[#050505] text-white flex items-center justify-center">
+      <main className="min-h-screen bg-gray-50 text-gray-900 flex items-center justify-center">
         <div className="text-center">
-          <div className="mx-auto h-12 w-12 animate-spin rounded-full border-2 border-white/10 border-t-[#7834c8]" />
-          <p className="mt-5 text-xs font-bold uppercase tracking-[0.3em] text-white/50">
+          <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-gray-200 border-t-[#7834c8]" />
+          <p className="mt-5 text-xs font-bold uppercase tracking-[0.3em] text-gray-400">
             Loading Dashboard
           </p>
         </div>
@@ -269,44 +269,39 @@ const AdminPreRegistrations = () => {
   ========================================================= */
 
   return (
-    <main className="min-h-screen bg-[#050505] text-white relative overflow-hidden selection:bg-[#7834c8]/40 selection:text-white">
-      {/* Background glow & Grid */}
-      <div className="pointer-events-none fixed inset-0 z-0">
-        <div className="absolute left-[10%] top-[-10%] h-[500px] w-[500px] rounded-full bg-[#7834c8]/15 blur-[180px]" />
-        <div className="absolute bottom-0 right-[5%] h-[400px] w-[400px] rounded-full bg-[#7834c8]/10 blur-[150px]" />
-        
-        {/* Premium Grid */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px)",
-            backgroundSize: "80px 80px",
-          }}
-        />
-      </div>
+    <main className="min-h-screen bg-gray-50 text-gray-900 relative overflow-hidden selection:bg-purple-200 selection:text-purple-900">
+      
+      {/* Subtle Background Pattern */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.4]"
+        style={{
+          backgroundImage:
+            "linear-gradient(#e5e7eb 1px, transparent 1px), linear-gradient(90deg, #e5e7eb 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
+        }}
+      />
 
-      <div className="relative z-10">
+      <div className="relative z-10 pb-20">
         {/* =====================================================
             HEADER
         ===================================================== */}
-        <header className="border-b border-white/10 bg-black/40 backdrop-blur-2xl sticky top-0 z-40">
+        <header className="border-b border-gray-200 bg-white/80 backdrop-blur-xl sticky top-0 z-40 shadow-sm">
           <div className="mx-auto flex max-w-7xl flex-col gap-6 px-5 py-6 md:flex-row md:items-center md:justify-between">
             <div>
-              <div className="flex items-center gap-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-white to-white/80 text-black shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+              <div className="flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-purple-100 text-[#7834c8]">
                   <span className="text-[11px] font-extrabold tracking-wider">
                     AE
                   </span>
                 </div>
-                <p className="text-xs font-bold uppercase tracking-[0.3em] text-purple-400">
+                <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-purple-600">
                   Aditya (Techno Services)
                 </p>
               </div>
-              <h1 className="mt-5 font-stacksansnotch text-3xl font-bold tracking-tight text-white md:text-4xl">
+              <h1 className="mt-4 font-stacksansnotch text-3xl font-bold tracking-tight text-gray-900 md:text-4xl">
                 Pre-Registration
               </h1>
-              <p className="mt-2 text-sm text-white/50 font-medium">
+              <p className="mt-2 text-sm text-gray-500 font-medium">
                 Demand & customer interest dashboard
               </p>
             </div>
@@ -315,7 +310,7 @@ const AdminPreRegistrations = () => {
               {/* EXPORT */}
               <button
                 onClick={exportCSV}
-                className="rounded-xl border border-white/10 bg-white/[0.03] px-6 py-3.5 text-xs font-bold uppercase tracking-[0.15em] text-white/70 transition-all hover:bg-white/[0.06] hover:text-white"
+                className="rounded-xl border border-gray-200 bg-white px-6 py-3.5 text-xs font-bold uppercase tracking-[0.15em] text-gray-600 shadow-sm transition-all hover:border-gray-300 hover:bg-gray-50 hover:text-gray-900"
               >
                 ↓ Export CSV
               </button>
@@ -324,7 +319,7 @@ const AdminPreRegistrations = () => {
               <button
                 onClick={fetchRegistrations}
                 disabled={refreshing}
-                className="relative rounded-xl bg-gradient-to-r from-[#7834c8] to-[#6127a3] px-6 py-3.5 text-xs font-bold uppercase tracking-[0.15em] text-white shadow-[0_5px_20px_rgba(120,52,200,.3)] transition-all hover:shadow-[0_10px_30px_rgba(120,52,200,.5)] disabled:opacity-70"
+                className="relative rounded-xl bg-[#7834c8] px-6 py-3.5 text-xs font-bold uppercase tracking-[0.15em] text-white shadow-md transition-all hover:bg-[#6127a3] hover:shadow-lg disabled:opacity-70"
               >
                 {refreshing ? "Refreshing..." : "↻ Refresh"}
               </button>
@@ -338,8 +333,8 @@ const AdminPreRegistrations = () => {
         <div className="mx-auto max-w-7xl px-5 py-8 md:px-8 md:py-12">
           {/* ERROR */}
           {errorMessage && (
-            <div className="mb-8 rounded-2xl border border-red-500/30 bg-red-500/10 px-6 py-5 backdrop-blur-md">
-              <p className="text-sm font-bold text-red-400">
+            <div className="mb-8 rounded-2xl border border-red-200 bg-red-50 px-6 py-5">
+              <p className="text-sm font-bold text-red-600">
                 {errorMessage}
               </p>
             </div>
@@ -379,11 +374,11 @@ const AdminPreRegistrations = () => {
           {/* ===================================================
               FILTER BAR
           =================================================== */}
-          <div className="mt-10 rounded-3xl border border-white/10 bg-[#0a0a0a]/80 p-5 shadow-xl backdrop-blur-2xl">
+          <div className="mt-10 rounded-3xl border border-gray-200 bg-white p-5 shadow-sm">
             <div className="grid gap-4 md:grid-cols-[1fr_200px_180px_auto]">
               {/* SEARCH */}
               <div className="relative">
-                <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-white/40">
+                <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-gray-400">
                   <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <circle cx="11" cy="11" r="8"></circle>
                     <path d="M21 21l-4.35-4.35"></path>
@@ -393,7 +388,7 @@ const AdminPreRegistrations = () => {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search customer, email, mobile, city..."
-                  className="w-full rounded-2xl border border-white/10 bg-black/50 py-4 pl-12 pr-5 text-sm text-white placeholder:text-white/40 outline-none transition-all focus:border-[#7834c8]/70 focus:bg-[#7834c8]/[0.02] focus:ring-4 focus:ring-[#7834c8]/10"
+                  className="w-full rounded-2xl border border-gray-300 bg-white py-4 pl-12 pr-5 text-sm text-gray-900 placeholder:text-gray-400 outline-none transition-all focus:border-[#7834c8] focus:ring-4 focus:ring-purple-100"
                 />
               </div>
 
@@ -401,7 +396,7 @@ const AdminPreRegistrations = () => {
               <select
                 value={productFilter}
                 onChange={(e) => setProductFilter(e.target.value)}
-                className="rounded-2xl border border-white/10 bg-black/50 px-5 py-4 text-sm font-medium text-white outline-none transition-all focus:border-[#7834c8]/70 focus:bg-[#7834c8]/[0.02] focus:ring-4 focus:ring-[#7834c8]/10 cursor-pointer"
+                className="rounded-2xl border border-gray-300 bg-white px-5 py-4 text-sm font-medium text-gray-700 outline-none transition-all focus:border-[#7834c8] focus:ring-4 focus:ring-purple-100 cursor-pointer"
               >
                 <option value="All">All Products</option>
                 <option value="Analog Watches">Analog Watches</option>
@@ -414,7 +409,7 @@ const AdminPreRegistrations = () => {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="rounded-2xl border border-white/10 bg-black/50 px-5 py-4 text-sm font-medium text-white outline-none transition-all focus:border-[#7834c8]/70 focus:bg-[#7834c8]/[0.02] focus:ring-4 focus:ring-[#7834c8]/10 cursor-pointer"
+                className="rounded-2xl border border-gray-300 bg-white px-5 py-4 text-sm font-medium text-gray-700 outline-none transition-all focus:border-[#7834c8] focus:ring-4 focus:ring-purple-100 cursor-pointer"
               >
                 <option value="All">All Status</option>
                 <option value="new">New</option>
@@ -433,7 +428,7 @@ const AdminPreRegistrations = () => {
                     setProductFilter("All");
                     setStatusFilter("All");
                   }}
-                  className="rounded-2xl border border-white/10 bg-white/[0.02] px-6 py-4 text-xs font-bold uppercase tracking-[0.1em] text-white/50 transition-all hover:bg-white/[0.05] hover:text-white"
+                  className="rounded-2xl border border-gray-200 bg-gray-50 px-6 py-4 text-xs font-bold uppercase tracking-[0.1em] text-gray-500 transition-all hover:bg-gray-100 hover:text-gray-800"
                 >
                   Clear
                 </button>
@@ -441,7 +436,7 @@ const AdminPreRegistrations = () => {
             </div>
 
             <div className="mt-4 flex items-center justify-between px-2">
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
                 Showing {filteredRegistrations.length} of{" "}
                 {registrations.length} registrations
               </p>
@@ -451,43 +446,43 @@ const AdminPreRegistrations = () => {
           {/* ===================================================
               DESKTOP TABLE
           =================================================== */}
-          <div className="mt-6 hidden overflow-hidden rounded-[2rem] border border-white/10 bg-[#0a0a0a]/60 backdrop-blur-xl lg:block shadow-2xl">
+          <div className="mt-6 hidden overflow-hidden rounded-[2rem] border border-gray-200 bg-white shadow-sm lg:block">
             <div className="overflow-x-auto">
               <table className="w-full min-w-[1100px] text-left">
-                <thead className="border-b border-white/10 bg-white/[0.02]">
+                <thead className="border-b border-gray-200 bg-gray-50">
                   <tr>
-                    <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">
+                    <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">
                       Customer
                     </th>
-                    <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">
+                    <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">
                       Contact
                     </th>
-                    <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">
+                    <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">
                       Product
                     </th>
-                    <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">
+                    <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">
                       Budget
                     </th>
-                    <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">
+                    <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">
                       Location
                     </th>
-                    <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">
+                    <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">
                       Status
                     </th>
-                    <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">
+                    <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">
                       Registered
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/5">
+                <tbody className="divide-y divide-gray-100">
                   {filteredRegistrations.length === 0 ? (
                     <tr>
-                      <td colSpan={7} className="px-6 py-24 text-center">
-                        <div className="text-4xl opacity-20">◌</div>
-                        <p className="mt-4 text-sm font-medium text-white/50">
+                      <td colSpan={7} className="px-6 py-24 text-center bg-gray-50/50">
+                        <div className="text-4xl text-gray-300">◌</div>
+                        <p className="mt-4 text-sm font-medium text-gray-500">
                           No registrations found
                         </p>
-                        <p className="mt-1 text-xs text-white/30">
+                        <p className="mt-1 text-xs text-gray-400">
                           Try changing your filters.
                         </p>
                       </td>
@@ -497,46 +492,46 @@ const AdminPreRegistrations = () => {
                       <tr
                         key={registration.id}
                         onClick={() => setSelectedRegistration(registration)}
-                        className="cursor-pointer bg-transparent transition-colors hover:bg-white/[0.04]"
+                        className="cursor-pointer bg-white transition-colors hover:bg-gray-50"
                       >
                         {/* CUSTOMER */}
                         <td className="px-6 py-5">
-                          <p className="text-sm font-bold text-white/90">
+                          <p className="text-sm font-bold text-gray-900">
                             {registration.full_name}
                           </p>
-                          <p className="mt-1 text-[10px] font-medium tracking-wider text-white/40">
+                          <p className="mt-1 text-[10px] font-medium tracking-wider text-gray-400">
                             #{registration.id.slice(0, 8)}
                           </p>
                         </td>
 
                         {/* CONTACT */}
                         <td className="px-6 py-5">
-                          <p className="text-xs font-medium text-white/80">
+                          <p className="text-xs font-medium text-gray-700">
                             {registration.email}
                           </p>
-                          <p className="mt-1 text-xs text-white/50">
+                          <p className="mt-1 text-xs text-gray-500">
                             {registration.mobile}
                           </p>
                         </td>
 
                         {/* PRODUCT */}
                         <td className="px-6 py-5">
-                          <span className="inline-flex rounded-full border border-purple-400/30 bg-purple-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.1em] text-purple-300">
+                          <span className="inline-flex rounded-full border border-purple-200 bg-purple-50 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.1em] text-purple-700">
                             {registration.product}
                           </span>
                         </td>
 
                         {/* BUDGET */}
-                        <td className="px-6 py-5 text-xs font-medium text-white/60">
+                        <td className="px-6 py-5 text-xs font-medium text-gray-500">
                           {registration.budget || "—"}
                         </td>
 
                         {/* LOCATION */}
                         <td className="px-6 py-5">
-                          <p className="text-xs font-medium text-white/80">
+                          <p className="text-xs font-medium text-gray-700">
                             {registration.city || "—"}
                           </p>
-                          <p className="mt-1 text-[10px] text-white/40">
+                          <p className="mt-1 text-[10px] text-gray-400">
                             {registration.state || ""}
                             {registration.pincode
                               ? ` · ${registration.pincode}`
@@ -557,10 +552,10 @@ const AdminPreRegistrations = () => {
 
                         {/* DATE */}
                         <td className="px-6 py-5">
-                          <p className="text-xs font-medium text-white/80">
+                          <p className="text-xs font-medium text-gray-700">
                             {formatDate(registration.created_at)}
                           </p>
-                          <p className="mt-1 text-[10px] text-white/40">
+                          <p className="mt-1 text-[10px] text-gray-400">
                             {formatTime(registration.created_at)}
                           </p>
                         </td>
@@ -577,8 +572,8 @@ const AdminPreRegistrations = () => {
           =================================================== */}
           <div className="mt-6 space-y-4 lg:hidden">
             {filteredRegistrations.length === 0 ? (
-              <div className="rounded-[2rem] border border-white/10 bg-white/[0.02] px-6 py-16 text-center backdrop-blur-md">
-                <p className="text-sm font-medium text-white/50">
+              <div className="rounded-[2rem] border border-gray-200 bg-white px-6 py-16 text-center">
+                <p className="text-sm font-medium text-gray-500">
                   No registrations found
                 </p>
               </div>
@@ -587,14 +582,14 @@ const AdminPreRegistrations = () => {
                 <button
                   key={registration.id}
                   onClick={() => setSelectedRegistration(registration)}
-                  className="w-full rounded-[2rem] border border-white/10 bg-white/[0.02] p-6 text-left backdrop-blur-md transition-colors hover:border-[#7834c8]/40 hover:bg-white/[0.04]"
+                  className="w-full rounded-[2rem] border border-gray-200 bg-white p-6 text-left shadow-sm transition-colors hover:border-purple-300 hover:bg-gray-50"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <p className="font-bold text-white/90">
+                      <p className="font-bold text-gray-900">
                         {registration.full_name}
                       </p>
-                      <p className="mt-1 text-xs font-medium text-white/50">
+                      <p className="mt-1 text-xs font-medium text-gray-500">
                         {registration.email}
                       </p>
                     </div>
@@ -607,36 +602,36 @@ const AdminPreRegistrations = () => {
                     </span>
                   </div>
 
-                  <div className="mt-6 grid grid-cols-2 gap-5 border-t border-white/10 pt-5">
+                  <div className="mt-6 grid grid-cols-2 gap-5 border-t border-gray-100 pt-5">
                     <div>
-                      <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/40">
+                      <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-400">
                         Product
                       </p>
-                      <p className="mt-1.5 text-xs font-bold text-purple-300">
+                      <p className="mt-1.5 text-xs font-bold text-purple-600">
                         {registration.product}
                       </p>
                     </div>
                     <div>
-                      <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/40">
+                      <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-400">
                         Budget
                       </p>
-                      <p className="mt-1.5 text-xs font-medium text-white/70">
+                      <p className="mt-1.5 text-xs font-medium text-gray-700">
                         {registration.budget || "—"}
                       </p>
                     </div>
                     <div>
-                      <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/40">
+                      <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-400">
                         Location
                       </p>
-                      <p className="mt-1.5 text-xs font-medium text-white/70">
+                      <p className="mt-1.5 text-xs font-medium text-gray-700">
                         {registration.city || "—"}
                       </p>
                     </div>
                     <div>
-                      <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/40">
+                      <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-400">
                         Registered
                       </p>
-                      <p className="mt-1.5 text-xs font-medium text-white/70">
+                      <p className="mt-1.5 text-xs font-medium text-gray-700">
                         {formatDate(registration.created_at)}
                       </p>
                     </div>
@@ -653,31 +648,31 @@ const AdminPreRegistrations = () => {
       ======================================================= */}
       {selectedRegistration && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-5 py-8 backdrop-blur-xl"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/40 px-5 py-8 backdrop-blur-sm"
           onClick={() => setSelectedRegistration(null)}
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-[2.5rem] border border-white/10 bg-[#0a0a0a] shadow-[0_40px_100px_rgba(0,0,0,0.8)]"
+            className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-[2.5rem] bg-white shadow-2xl"
           >
-            {/* Inner Glow */}
-            <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#7834c8]/10 to-transparent pointer-events-none" />
+            {/* Inner Accents */}
+            <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-purple-50 to-transparent pointer-events-none" />
 
             {/* MODAL HEADER */}
-            <div className="relative flex items-start justify-between border-b border-white/10 p-7 md:p-10">
+            <div className="relative flex items-start justify-between border-b border-gray-100 p-7 md:p-10">
               <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-purple-400">
+                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-purple-600">
                   Customer Details
                 </p>
-                <h2 className="mt-3 font-stacksansnotch text-3xl font-bold tracking-tight text-white md:text-4xl">
+                <h2 className="mt-2 font-stacksansnotch text-3xl font-bold tracking-tight text-gray-900 md:text-4xl">
                   {selectedRegistration.full_name}
                 </h2>
               </div>
               <button
                 onClick={() => setSelectedRegistration(null)}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/50 transition-all hover:border-white/30 hover:bg-white/10 hover:text-white"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition-all hover:bg-gray-200 hover:text-gray-800"
               >
-                <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
               </button>
@@ -686,17 +681,17 @@ const AdminPreRegistrations = () => {
             {/* MODAL BODY */}
             <div className="relative p-7 md:p-10">
               {/* PRODUCT */}
-              <div className="rounded-[1.5rem] border border-[#7834c8]/30 bg-gradient-to-br from-[#7834c8]/10 to-transparent p-6 shadow-inner">
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-purple-300/70">
+              <div className="rounded-[1.5rem] border border-purple-100 bg-purple-50 p-6">
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-purple-500">
                   Product Interest
                 </p>
-                <p className="mt-2 text-xl font-bold text-white">
+                <p className="mt-2 text-xl font-bold text-purple-900">
                   {selectedRegistration.product}
                 </p>
               </div>
 
               {/* DETAILS */}
-              <div className="mt-8 grid gap-5 sm:grid-cols-2">
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 <Detail label="Email" value={selectedRegistration.email} />
                 <Detail label="Mobile" value={selectedRegistration.mobile} />
                 <Detail label="Budget" value={selectedRegistration.budget || "Not specified"} />
@@ -711,11 +706,11 @@ const AdminPreRegistrations = () => {
               </div>
 
               {/* REGISTERED */}
-              <div className="mt-8 rounded-[1.5rem] border border-white/10 bg-white/[0.02] p-6">
-                <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/40">
+              <div className="mt-6 rounded-[1.5rem] border border-gray-200 bg-gray-50 p-6">
+                <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-500">
                   Registration Date
                 </p>
-                <p className="mt-2 text-sm font-medium text-white/80">
+                <p className="mt-2 text-sm font-medium text-gray-900">
                   {new Date(selectedRegistration.created_at).toLocaleString("en-IN", {
                     dateStyle: "long",
                     timeStyle: "short",
@@ -727,13 +722,13 @@ const AdminPreRegistrations = () => {
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 <a
                   href={`tel:${selectedRegistration.mobile}`}
-                  className="flex items-center justify-center rounded-2xl border border-white/20 bg-transparent py-4.5 text-xs font-bold uppercase tracking-[0.15em] text-white/80 transition-all hover:bg-white/5 hover:text-white"
+                  className="flex items-center justify-center rounded-2xl border border-gray-300 bg-white py-4.5 text-xs font-bold uppercase tracking-[0.15em] text-gray-700 shadow-sm transition-all hover:bg-gray-50"
                 >
                   Call Customer
                 </a>
                 <a
                   href={`mailto:${selectedRegistration.email}`}
-                  className="flex items-center justify-center rounded-2xl bg-gradient-to-r from-[#7834c8] to-[#6127a3] py-4.5 text-xs font-bold uppercase tracking-[0.15em] text-white shadow-[0_5px_20px_rgba(120,52,200,.3)] transition-all hover:shadow-[0_10px_30px_rgba(120,52,200,.5)]"
+                  className="flex items-center justify-center rounded-2xl bg-[#7834c8] py-4.5 text-xs font-bold uppercase tracking-[0.15em] text-white shadow-md transition-all hover:bg-[#6127a3] hover:shadow-lg"
                 >
                   Email Customer
                 </a>
@@ -763,16 +758,20 @@ const Stat = ({
     <div
       className={`rounded-[1.5rem] border p-6 transition-transform hover:-translate-y-1 ${
         accent
-          ? "border-[#7834c8]/50 bg-gradient-to-br from-[#7834c8]/20 to-transparent shadow-[0_10px_30px_rgba(120,52,200,0.15)]"
-          : "border-white/10 bg-[#0a0a0a]/60 backdrop-blur-md"
+          ? "border-purple-200 bg-purple-50 shadow-sm"
+          : "border-gray-200 bg-white shadow-sm"
       }`}
     >
-      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
+      <p
+        className={`text-[10px] font-bold uppercase tracking-[0.2em] ${
+          accent ? "text-purple-600" : "text-gray-500"
+        }`}
+      >
         {label}
       </p>
       <p
         className={`mt-3 font-stacksansnotch text-4xl font-bold ${
-          accent ? "text-white" : "text-white/90"
+          accent ? "text-purple-900" : "text-gray-900"
         }`}
       >
         {value}
@@ -795,12 +794,12 @@ const Detail = ({
   capitalize?: boolean;
 }) => {
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5">
-      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
+    <div className="rounded-2xl border border-gray-200 bg-gray-50/50 p-5">
+      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">
         {label}
       </p>
       <p
-        className={`mt-2.5 break-words text-sm font-medium text-white/80 ${
+        className={`mt-2 break-words text-sm font-medium text-gray-900 ${
           capitalize ? "capitalize" : ""
         }`}
       >
