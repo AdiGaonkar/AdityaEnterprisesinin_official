@@ -1,660 +1,655 @@
-import React, { useState } from "react";
-import { useSearchParams, Link } from "react-router-dom";
-import { supabase } from "../supabaseClient";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
 import Collaborate from "../components/Collaborate";
 
-const PreRegisterForm = () => {
-  const [searchParams] = useSearchParams();
+const products = [
+  {
+    id: "analog-watch",
+    name: "Analog Watches",
+    category: "TIMELESS TECHNOLOGY",
+    subtitle: "Classic design. Modern selection.",
+    description:
+      "Explore our upcoming selection of analog watches designed for everyday wear, professional settings, and timeless style.",
+    image:
+      "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=1400&q=85",
+  },
+  {
+    id: "smart-watch",
+    name: "Smart Watches",
+    category: "CONNECTED TECHNOLOGY",
+    subtitle: "Technology on your wrist.",
+    description:
+      "Discover upcoming smart watches combining connectivity, activity tracking, productivity, and everyday convenience.",
+    image:
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1400&q=85",
+  },
+  {
+    id: "smart-band",
+    name: "Smart Bands",
+    category: "FITNESS TECHNOLOGY",
+    subtitle: "Track. Move. Improve.",
+    description:
+      "Lightweight wearable technology designed for activity tracking, fitness, and everyday movement.",
+    image:
+      "https://images.unsplash.com/photo-1557935728-e6d1eaabe558?auto=format&fit=crop&w=1400&q=85",
+  },
+  {
+    id: "smart-ring",
+    name: "Smart Rings",
+    category: "WEARABLE TECHNOLOGY",
+    subtitle: "Small form. Smart technology.",
+    description:
+      "Compact wearable technology designed to bring smart features into your everyday life without the bulk.",
+    image:
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1400&q=85",
+  },
+];
 
-  const selectedProduct =
-    searchParams.get("product") || "Analog Watches";
+const PreRegister = () => {
+  const navigate = useNavigate();
 
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    mobile: "",
-    budget: "",
-    city: "",
-    state: "",
-    pincode: "",
-    updates: true,
-  });
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { name, value, type } = e.target;
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]:
-        type === "checkbox"
-          ? (e.target as HTMLInputElement).checked
-          : value,
-    }));
-
-    if (errorMessage) {
-      setErrorMessage("");
-    }
-  };
-
-  const validateForm = () => {
-    const fullName = formData.fullName.trim();
-    const email = formData.email.trim();
-    const mobile = formData.mobile.trim();
-    const pincode = formData.pincode.trim();
-
-    if (fullName.length < 2) {
-      return "Please enter your full name.";
-    }
-
-    if (!email) {
-      return "Please enter your email address.";
-    }
-
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      return "Please enter a valid email address.";
-    }
-
-    const mobileDigits = mobile.replace(/\D/g, "");
-
-    if (mobileDigits.length !== 10 && mobileDigits.length !== 12) {
-      return "Please enter a valid Indian mobile number.";
-    }
-
-    if (pincode && !/^\d{6}$/.test(pincode)) {
-      return "Please enter a valid 6-digit PIN code.";
-    }
-
-    return "";
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (loading) return;
-
-    setErrorMessage("");
-
-    const validationError = validateForm();
-
-    if (validationError) {
-      setErrorMessage(validationError);
-      return;
-    }
-
-    setLoading(true);
-
-    try {
-      const { error } = await supabase
-        .from("pre_registrations")
-        .insert({
-          full_name: formData.fullName.trim(),
-          email: formData.email.trim().toLowerCase(),
-          mobile: formData.mobile.trim(),
-          product: selectedProduct,
-          budget: formData.budget,
-          city: formData.city.trim(),
-          state: formData.state.trim(),
-          pincode: formData.pincode.trim(),
-          updates: formData.updates,
-        });
-
-      if (error) {
-        console.error("SUPABASE ERROR:", error);
-
-        if (error.code === "42501") {
-          setErrorMessage(
-            "We couldn't submit your registration right now. Please try again in a moment."
-          );
-        } else {
-          setErrorMessage(
-            "Something went wrong while submitting your registration. Please try again."
-          );
-        }
-
-        return;
-      }
-
-      setSubmitted(true);
-    } catch (error) {
-      console.error("UNEXPECTED ERROR:", error);
-
-      setErrorMessage(
-        "Something went wrong. Please check your connection and try again."
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  /* =========================================================
-     SUCCESS SCREEN
-  ========================================================= */
-
-  if (submitted) {
-    return (
-      <main className="relative min-h-screen overflow-hidden bg-[#050505] text-white">
-        {/* Ambient Purple */}
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-1/2 top-1/2 h-[550px] w-[550px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#7834c8]/15 blur-[150px]" />
-
-          <div className="absolute right-[-100px] top-[-100px] h-[350px] w-[350px] rounded-full bg-[#7834c8]/10 blur-[130px]" />
-
-          <div className="absolute bottom-[-100px] left-[-100px] h-[300px] w-[300px] rounded-full bg-purple-900/10 blur-[120px]" />
-        </div>
-
-        {/* Grid */}
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.025]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px)",
-            backgroundSize: "70px 70px",
-          }}
-        />
-
-        <div className="relative z-10 flex min-h-screen items-center justify-center px-5 py-16">
-          <div className="w-full max-w-xl text-center">
-            {/* Success Icon */}
-            <div className="mx-auto mb-8 flex h-24 w-24 items-center justify-center rounded-full border border-[#7834c8]/40 bg-[#7834c8]/10 shadow-[0_0_70px_rgba(120,52,200,.2)]">
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#7834c8] shadow-[0_0_30px_rgba(120,52,200,.5)]">
-                <svg
-                  width="26"
-                  height="26"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="white"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-              </div>
-            </div>
-
-            <p className="text-[10px] uppercase tracking-[0.4em] text-purple-300">
-              Registration Confirmed
-            </p>
-
-            <h1 className="mt-5 text-5xl font-bold tracking-tight md:text-7xl">
-              You're on
-              <span className="block bg-gradient-to-r from-white via-purple-200 to-[#7834c8] bg-clip-text text-transparent">
-                the list.
-              </span>
-            </h1>
-
-            <p className="mx-auto mt-6 max-w-md text-sm leading-7 text-white/40">
-              Thanks for registering your interest in{" "}
-              <span className="text-purple-300">
-                {selectedProduct}
-              </span>
-              .
-            </p>
-
-            <p className="mt-2 text-xs text-white/25">
-              We'll contact you when it's available.
-            </p>
-
-            {/* Product */}
-            <div className="mt-9 rounded-3xl border border-white/10 bg-white/[0.035] p-5 text-left backdrop-blur-xl">
-              <p className="text-[9px] uppercase tracking-[0.3em] text-white/25">
-                Your Selection
-              </p>
-
-              <div className="mt-3 flex items-center justify-between">
-                <p className="text-base font-medium">
-                  {selectedProduct}
-                </p>
-
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#7834c8]/15 text-purple-300">
-                  ✓
-                </div>
-              </div>
-            </div>
-
-            <Link
-              to="/pre-register"
-              className="group mt-8 inline-flex items-center gap-3 rounded-full bg-[#7834c8] px-7 py-4 text-[10px] font-semibold uppercase tracking-[0.2em] transition-all duration-300 hover:bg-[#8c45dd] hover:shadow-[0_0_40px_rgba(120,52,200,.35)]"
-            >
-              Explore Collection
-
-              <span className="transition-transform group-hover:translate-x-1">
-                →
-              </span>
-            </Link>
-          </div>
-        </div>
-      </main>
+  const handleRegister = (product: string) => {
+    navigate(
+      `/PreRegisterForm?product=${encodeURIComponent(product)}`
     );
-  }
+  };
 
-  /* =========================================================
-     FORM SCREEN
-  ========================================================= */
+  const scrollToCollection = () => {
+    document
+      .getElementById("collection")
+      ?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#050505] text-white">
+    <main className="min-h-screen overflow-hidden bg-black font-sans text-white">
+
       {/* =====================================================
-          BACKGROUND
+          AMBIENT BACKGROUND
       ====================================================== */}
 
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-[10%] top-[10%] h-[450px] w-[450px] rounded-full bg-[#7834c8]/10 blur-[160px]" />
+      <div className="pointer-events-none fixed inset-0 z-0">
 
-        <div className="absolute right-[5%] top-[45%] h-[400px] w-[400px] rounded-full bg-[#7834c8]/8 blur-[150px]" />
+        <div className="absolute left-[10%] top-[20%] h-[400px] w-[400px] rounded-full bg-yellow-500/[0.035] blur-[150px]" />
 
-        <div className="absolute bottom-[-150px] left-1/2 h-[400px] w-[700px] -translate-x-1/2 rounded-full bg-purple-900/10 blur-[160px]" />
+        <div className="absolute right-[5%] top-[50%] h-[500px] w-[500px] rounded-full bg-yellow-500/[0.025] blur-[170px]" />
+
       </div>
 
-      {/* Grid */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.025]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px)",
-          backgroundSize: "70px 70px",
-        }}
-      />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-5 py-8 md:px-8 md:py-12">
-        {/* =====================================================
-            TOP BAR
-        ====================================================== */}
+      {/* =====================================================
+          NAVBAR
+      ====================================================== */}
 
-        <div className="flex items-center justify-between">
-          <Link
-            to="/pre-register"
-            className="group inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-white/30 transition hover:text-white"
-          >
-            <span className="transition-transform group-hover:-translate-x-1">
-              ←
-            </span>
+      <div className="relative z-50 px-4 pt-6 sm:px-8">
 
-            Back
-          </Link>
+        <div className="mx-auto max-w-7xl">
 
-          <div className="text-[10px] font-semibold tracking-[0.15em] text-white/20">
-            ADITYA
-            <span className="text-[#7834c8]">.</span>
-          </div>
+          <Navbar />
+
         </div>
 
-        {/* =====================================================
-            MAIN GRID
-        ====================================================== */}
+      </div>
 
-        <div className="mx-auto mt-16 grid max-w-6xl items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
-          {/* =================================================
-              LEFT CONTENT
-          ================================================= */}
 
-          <div className="lg:sticky lg:top-10">
-            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[#7834c8]/30 bg-[#7834c8]/10 px-4 py-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#7834c8] shadow-[0_0_10px_#7834c8]" />
+      {/* =====================================================
+          HERO
+      ====================================================== */}
 
-              <span className="text-[9px] font-semibold uppercase tracking-[0.35em] text-purple-300">
-                Pre-Registration
+      <section className="relative z-10 min-h-[85vh]">
+
+        <div className="mx-auto flex max-w-7xl items-center px-6 py-28 sm:px-10 md:min-h-[80vh] md:px-16">
+
+          <div className="max-w-6xl">
+
+            {/* EYEBROW */}
+
+            <div className="mb-7 flex items-center gap-4">
+
+              <div className="h-px w-12 bg-yellow-400" />
+
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white">
+                Upcoming Collection
               </span>
+
             </div>
 
-            <h1 className="text-5xl font-bold leading-[1.02] tracking-[-0.04em] md:text-7xl">
-              Be the
+
+            {/* HEADING */}
+
+            <h1 className="font-stacksansnotch text-[52px] font-medium leading-[1.02] tracking-tight text-white sm:text-[68px] md:text-[84px] lg:text-[100px]">
+
+              Choose what
               <br />
 
-              <span className="bg-gradient-to-r from-white via-white to-purple-400 bg-clip-text text-transparent">
-                First to Know.
+              <span className="text-gray-400">
+                comes next.
               </span>
+
             </h1>
 
-            <p className="mt-7 max-w-md text-sm leading-7 text-white/40 md:text-base">
-              Register your interest and we'll keep you updated
-              when your selected product becomes available.
+
+            {/* DESCRIPTION */}
+
+            <p className="mt-8 max-w-[620px] text-base font-light leading-relaxed text-gray-400 sm:text-lg">
+
+              We're exploring our next collection of watches and wearable
+              technology. Tell us what you're interested in and help us decide
+              what comes next.
+
             </p>
 
-            {/* Product Selection */}
-            <div className="mt-10 rounded-[1.75rem] border border-white/10 bg-white/[0.025] p-5 backdrop-blur-xl">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-[9px] uppercase tracking-[0.3em] text-white/25">
-                    Your Selection
-                  </p>
 
-                  <p className="mt-3 text-lg font-medium">
-                    {selectedProduct}
-                  </p>
-                </div>
+            {/* BUTTONS */}
 
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-[#7834c8]/30 bg-[#7834c8]/10">
-                  <div className="h-2 w-2 rounded-full bg-[#7834c8] shadow-[0_0_15px_#7834c8]" />
-                </div>
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+
+              <button
+                onClick={scrollToCollection}
+                className="group inline-flex items-center gap-4 rounded-full bg-white px-7 py-4 text-xs font-bold uppercase tracking-[0.1em] text-black transition-all duration-300 hover:bg-yellow-400"
+              >
+
+                Explore Collection
+
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-black/10 text-lg transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+
+              </button>
+
+
+              <div className="flex items-center gap-3 rounded-full border border-white/10 px-6 py-4">
+
+                <span className="h-1.5 w-1.5 rounded-full bg-yellow-400" />
+
+                <span className="text-[10px] uppercase tracking-[0.15em] text-gray-400">
+                  No payment required
+                </span>
+
               </div>
 
-              <div className="mt-5 h-px bg-white/5" />
-
-              <p className="mt-4 text-[10px] leading-5 text-white/25">
-                You're registering interest only. No payment is
-                required at this stage.
-              </p>
             </div>
 
-            {/* Steps */}
-            <div className="mt-8 hidden space-y-5 lg:block">
-              <div className="flex items-center gap-4">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#7834c8] text-[10px] font-bold shadow-[0_0_20px_rgba(120,52,200,.3)]">
-                  01
-                </div>
 
-                <div>
-                  <p className="text-xs font-medium">
-                    Your Information
-                  </p>
+            {/* HERO INFO */}
 
-                  <p className="mt-1 text-[10px] text-white/20">
-                    Tell us a little about yourself
-                  </p>
-                </div>
+            <div className="mt-16 flex flex-wrap gap-x-10 gap-y-5 border-t border-white/10 pt-6">
+
+              <div>
+
+                <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-600">
+                  Registration
+                </p>
+
+                <p className="mt-1 text-xs text-gray-400">
+                  Free
+                </p>
+
               </div>
 
-              <div className="ml-4 h-8 w-px bg-white/10" />
 
-              <div className="flex items-center gap-4 opacity-30">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 text-[10px]">
-                  02
-                </div>
+              <div>
 
-                <div>
-                  <p className="text-xs font-medium">
-                    Stay Updated
-                  </p>
+                <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-600">
+                  Payment
+                </p>
 
-                  <p className="mt-1 text-[10px] text-white/20">
-                    We'll let you know when it's ready
-                  </p>
-                </div>
+                <p className="mt-1 text-xs text-gray-400">
+                  Not Required
+                </p>
+
               </div>
+
+
+              <div>
+
+                <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-600">
+                  Status
+                </p>
+
+                <p className="mt-1 text-xs text-yellow-500">
+                  Coming Soon
+                </p>
+
+              </div>
+
             </div>
+
           </div>
 
-          {/* =================================================
-              RIGHT FORM
-          ================================================= */}
+        </div>
 
-          <form
-            onSubmit={handleSubmit}
-            noValidate
-            className="rounded-[2rem] border border-white/10 bg-white/[0.035] p-5 shadow-[0_40px_120px_rgba(0,0,0,.5)] backdrop-blur-2xl md:p-9"
-          >
-            {/* Form Header */}
-            <div className="mb-9 border-b border-white/10 pb-7">
-              <p className="text-[9px] font-semibold uppercase tracking-[0.3em] text-purple-400">
-                Your Information
+      </section>
+
+
+      {/* =====================================================
+          STATEMENT SECTION
+      ====================================================== */}
+
+      <section className="relative z-10 border-y border-white/[0.07] bg-[#080808]">
+
+        <div className="mx-auto max-w-7xl px-6 py-24 sm:px-10 md:px-16 md:py-32">
+
+          <div className="grid gap-12 md:grid-cols-[1fr_1.5fr] md:items-end">
+
+            <div>
+
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-500">
+                Your Demand
               </p>
 
-              <h2 className="mt-2 text-2xl font-semibold tracking-tight">
-                Let's make it happen.
+              <p className="mt-4 text-sm leading-6 text-gray-500">
+                We want to know what you want before we decide what comes
+                next.
+              </p>
+
+            </div>
+
+
+            <h2 className="font-stacksansnotch text-4xl font-medium leading-[1.05] tracking-tight text-white sm:text-5xl md:text-7xl">
+
+              You choose.
+              <br />
+
+              <span className="text-gray-600">
+                We source.
+              </span>
+
+            </h2>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          COLLECTION
+      ====================================================== */}
+
+      <section
+        id="collection"
+        className="relative z-10 px-6 py-24 sm:px-10 md:px-16 md:py-32"
+      >
+
+        <div className="mx-auto max-w-7xl">
+
+          {/* HEADER */}
+
+          <div className="mb-14 flex flex-col justify-between gap-8 md:flex-row md:items-end">
+
+            <div>
+
+              <div className="mb-4 flex items-center gap-3">
+
+                <div className="h-px w-8 bg-yellow-500" />
+
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-500">
+                  What we're exploring
+                </p>
+
+              </div>
+
+              <h2 className="font-stacksansnotch text-4xl font-medium tracking-tight sm:text-5xl md:text-6xl">
+                Upcoming Products
               </h2>
 
-              <p className="mt-2 text-xs text-white/25">
-                Fields marked with * are required.
-              </p>
             </div>
 
-            {/* Name */}
-            <div className="mb-6">
-              <label
-                htmlFor="fullName"
-                className="mb-2 block text-[9px] font-semibold uppercase tracking-[0.18em] text-white/40"
+
+            <p className="max-w-md text-sm leading-6 text-gray-500">
+
+              Choose a category that interests you. Register your preference
+              and we'll keep you updated when the collection becomes
+              available.
+
+            </p>
+
+          </div>
+
+
+          {/* PRODUCTS */}
+
+          <div className="grid gap-5 md:grid-cols-2">
+
+            {products.map((product, index) => (
+
+              <article
+                key={product.id}
+                className="group relative overflow-hidden rounded-3xl border border-white/10 bg-[#0a0a0a] shadow-2xl transition-all duration-500 hover:-translate-y-1 hover:border-yellow-500/40"
               >
-                Full Name
-                <span className="ml-1 text-purple-400">*</span>
-              </label>
 
-              <input
-                id="fullName"
-                required
-                autoComplete="name"
-                name="fullName"
-                value={formData.fullName}
-                onChange={handleChange}
-                placeholder="Your full name"
-                className="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-4 text-sm outline-none transition-all duration-300 placeholder:text-white/15 hover:border-white/20 focus:border-[#7834c8]/70 focus:bg-[#7834c8]/[0.03] focus:shadow-[0_0_25px_rgba(120,52,200,.08)]"
-              />
-            </div>
+                {/* IMAGE */}
 
-            {/* Email + Mobile */}
-            <div className="mb-6 grid gap-5 md:grid-cols-2">
-              <div>
-                <label
-                  htmlFor="email"
-                  className="mb-2 block text-[9px] font-semibold uppercase tracking-[0.18em] text-white/40"
-                >
-                  Email
-                  <span className="ml-1 text-purple-400">*</span>
-                </label>
+                <div className="relative aspect-[16/10] overflow-hidden">
 
-                <input
-                  id="email"
-                  required
-                  type="email"
-                  autoComplete="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="you@example.com"
-                  className="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-4 text-sm outline-none transition-all duration-300 placeholder:text-white/15 hover:border-white/20 focus:border-[#7834c8]/70 focus:bg-[#7834c8]/[0.03]"
-                />
-              </div>
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="absolute inset-0 h-full w-full object-cover opacity-50 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-65"
+                  />
 
-              <div>
-                <label
-                  htmlFor="mobile"
-                  className="mb-2 block text-[9px] font-semibold uppercase tracking-[0.18em] text-white/40"
-                >
-                  Mobile
-                  <span className="ml-1 text-purple-400">*</span>
-                </label>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
 
-                <input
-                  id="mobile"
-                  required
-                  type="tel"
-                  inputMode="numeric"
-                  autoComplete="tel"
-                  name="mobile"
-                  value={formData.mobile}
-                  onChange={handleChange}
-                  placeholder="+91 XXXXX XXXXX"
-                  className="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-4 text-sm outline-none transition-all duration-300 placeholder:text-white/15 hover:border-white/20 focus:border-[#7834c8]/70 focus:bg-[#7834c8]/[0.03]"
-                />
-              </div>
-            </div>
 
-            {/* Budget */}
-            <div className="mb-6">
-              <label
-                htmlFor="budget"
-                className="mb-2 block text-[9px] font-semibold uppercase tracking-[0.18em] text-white/40"
-              >
-                Preferred Budget
-              </label>
+                  {/* NUMBER */}
 
-              <select
-                id="budget"
-                name="budget"
-                value={formData.budget}
-                onChange={handleChange}
-                className="w-full appearance-none rounded-xl border border-white/10 bg-black/30 px-4 py-4 text-sm text-white outline-none transition-all duration-300 hover:border-white/20 focus:border-[#7834c8]/70"
-              >
-                <option value="" className="bg-[#090909]">
-                  Select your budget
-                </option>
+                  <div className="absolute left-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/40 backdrop-blur-md">
 
-                <option
-                  value="Under ₹1,000"
-                  className="bg-[#090909]"
-                >
-                  Under ₹1,000
-                </option>
-
-                <option
-                  value="₹1,000 – ₹2,000"
-                  className="bg-[#090909]"
-                >
-                  ₹1,000 – ₹2,000
-                </option>
-
-                <option
-                  value="₹2,000 – ₹5,000"
-                  className="bg-[#090909]"
-                >
-                  ₹2,000 – ₹5,000
-                </option>
-
-                <option value="₹5,000+" className="bg-[#090909]">
-                  ₹5,000+
-                </option>
-              </select>
-            </div>
-
-            {/* Location */}
-            <div className="mb-7">
-              <p className="mb-3 text-[9px] font-semibold uppercase tracking-[0.18em] text-white/40">
-                Location
-              </p>
-
-              <div className="grid gap-4 md:grid-cols-3">
-                <input
-                  id="city"
-                  autoComplete="address-level2"
-                  name="city"
-                  value={formData.city}
-                  onChange={handleChange}
-                  placeholder="City"
-                  className="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-4 text-sm outline-none transition-all duration-300 placeholder:text-white/15 focus:border-[#7834c8]/70"
-                />
-
-                <input
-                  id="state"
-                  autoComplete="address-level1"
-                  name="state"
-                  value={formData.state}
-                  onChange={handleChange}
-                  placeholder="State"
-                  className="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-4 text-sm outline-none transition-all duration-300 placeholder:text-white/15 focus:border-[#7834c8]/70"
-                />
-
-                <input
-                  id="pincode"
-                  inputMode="numeric"
-                  autoComplete="postal-code"
-                  name="pincode"
-                  value={formData.pincode}
-                  onChange={handleChange}
-                  placeholder="PIN Code"
-                  maxLength={6}
-                  className="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-4 text-sm outline-none transition-all duration-300 placeholder:text-white/15 focus:border-[#7834c8]/70"
-                />
-              </div>
-            </div>
-
-            {/* Consent */}
-            <label className="mb-6 flex cursor-pointer items-start gap-3 rounded-xl border border-white/5 bg-white/[0.015] p-4">
-              <input
-                type="checkbox"
-                name="updates"
-                checked={formData.updates}
-                onChange={handleChange}
-                className="mt-0.5 h-4 w-4 shrink-0 accent-[#7834c8]"
-              />
-
-              <span className="text-[11px] leading-5 text-white/30">
-                I agree to receive updates about this product and
-                its availability.
-              </span>
-            </label>
-
-            {/* Error */}
-            {errorMessage && (
-              <div className="mb-5 rounded-xl border border-red-500/20 bg-red-500/5 p-4">
-                <p className="text-xs font-medium text-red-300">
-                  Unable to complete registration
-                </p>
-
-                <p className="mt-1 text-[11px] leading-5 text-red-300/50">
-                  {errorMessage}
-                </p>
-              </div>
-            )}
-
-            {/* Submit */}
-            <button
-              type="submit"
-              disabled={loading}
-              className="group relative w-full overflow-hidden rounded-xl bg-[#7834c8] py-5 text-xs font-semibold uppercase tracking-[0.2em] text-white shadow-[0_10px_40px_rgba(120,52,200,.2)] transition-all duration-300 hover:bg-[#8c45dd] hover:shadow-[0_15px_50px_rgba(120,52,200,.35)] disabled:cursor-not-allowed disabled:opacity-60"
-            >
-              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-
-              <span className="relative z-10 flex items-center justify-center gap-3">
-                {loading ? (
-                  <>
-                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/20 border-t-white" />
-                    Registering...
-                  </>
-                ) : (
-                  <>
-                    Complete Registration
-
-                    <span className="transition-transform duration-300 group-hover:translate-x-1">
-                      →
+                    <span className="text-[9px] font-bold text-gray-400">
+                      0{index + 1}
                     </span>
-                  </>
-                )}
-              </span>
-            </button>
 
-            {/* Bottom Note */}
-            <div className="mt-6 text-center">
-              <p className="text-[10px] text-white/20">
-                No payment required
-              </p>
+                  </div>
 
-              <p className="mt-1 text-[9px] text-white/10">
-                Interest registration only
-              </p>
+
+                  {/* STATUS */}
+
+                  <div className="absolute right-5 top-5">
+
+                    <span className="rounded-full border border-yellow-500/20 bg-black/50 px-4 py-2 text-[9px] font-bold uppercase tracking-[0.18em] text-yellow-500 backdrop-blur-md">
+                      Coming Soon
+                    </span>
+
+                  </div>
+
+
+                  {/* IMAGE TITLE */}
+
+                  <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-7">
+
+                    <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-400">
+                      {product.category}
+                    </p>
+
+                    <h3 className="font-stacksansnotch text-2xl font-medium leading-tight text-white sm:text-3xl">
+                      {product.name}
+                    </h3>
+
+                  </div>
+
+                </div>
+
+
+                {/* CONTENT */}
+
+                <div className="p-6 sm:p-7">
+
+                  <p className="text-sm font-medium text-gray-300">
+                    {product.subtitle}
+                  </p>
+
+                  <p className="mt-3 text-xs leading-6 text-gray-500 sm:text-sm">
+                    {product.description}
+                  </p>
+
+
+                  {/* FOOTER */}
+
+                  <div className="mt-7 flex items-center justify-between border-t border-white/10 pt-5">
+
+                    <span className="text-[9px] uppercase tracking-[0.18em] text-gray-600">
+                      Register your interest
+                    </span>
+
+
+                    <button
+                      onClick={() => handleRegister(product.name)}
+                      className="group/button inline-flex items-center gap-3 rounded-full bg-white px-5 py-3 text-[10px] font-bold uppercase tracking-[0.12em] text-black transition-all duration-300 hover:bg-yellow-400"
+                    >
+
+                      Register
+
+                      <span className="text-base transition-transform duration-300 group-hover/button:translate-x-1">
+                        →
+                      </span>
+
+                    </button>
+
+                  </div>
+
+                </div>
+
+              </article>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          HOW IT WORKS
+      ====================================================== */}
+
+      <section className="relative z-10 bg-[#080808] px-6 py-24 sm:px-10 md:px-16 md:py-32">
+
+        <div className="mx-auto max-w-7xl">
+
+          <div className="grid gap-14 md:grid-cols-[0.8fr_1.2fr]">
+
+            {/* LEFT */}
+
+            <div>
+
+              <div className="flex items-center gap-3">
+
+                <div className="h-px w-8 bg-yellow-500" />
+
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-500">
+                  Simple Process
+                </p>
+
+              </div>
+
+              <h2 className="mt-5 font-stacksansnotch text-4xl font-medium leading-tight tracking-tight sm:text-5xl md:text-6xl">
+
+                Tell us.
+                <br />
+
+                <span className="text-gray-600">
+                  We'll take it from there.
+                </span>
+
+              </h2>
+
             </div>
-          </form>
+
+
+            {/* RIGHT */}
+
+            <div className="divide-y divide-white/10 border-y border-white/10">
+
+              {[
+                {
+                  number: "01",
+                  title: "Choose",
+                  text: "Select the product category you're interested in.",
+                },
+                {
+                  number: "02",
+                  title: "Register",
+                  text: "Share your details and tell us what you're looking for.",
+                },
+                {
+                  number: "03",
+                  title: "We source",
+                  text: "Your interest helps us plan our upcoming collection.",
+                },
+                {
+                  number: "04",
+                  title: "Get notified",
+                  text: "We'll contact you when the selected collection becomes available.",
+                },
+              ].map((step) => (
+
+                <div
+                  key={step.number}
+                  className="group grid grid-cols-[45px_1fr] gap-5 py-7"
+                >
+
+                  <span className="text-[10px] font-bold text-yellow-500">
+                    {step.number}
+                  </span>
+
+                  <div>
+
+                    <h3 className="text-base font-semibold text-white">
+                      {step.title}
+                    </h3>
+
+                    <p className="mt-2 max-w-lg text-sm leading-6 text-gray-500 transition-colors duration-300 group-hover:text-gray-300">
+                      {step.text}
+                    </p>
+
+                  </div>
+
+                </div>
+
+              ))}
+
+            </div>
+
+          </div>
+
         </div>
 
-        {/* =====================================================
-            COLLABORATE - BOTTOM
-        ====================================================== */}
+      </section>
 
-        <section className="relative z-10 mt-28 border-t border-white/10 pt-20">
-          <Collaborate />
-        </section>
 
-        {/* =====================================================
-            FOOTER
-        ====================================================== */}
+      {/* =====================================================
+          FINAL CTA
+      ====================================================== */}
 
-        <div className="mx-auto mt-16 flex max-w-6xl flex-col gap-4 border-t border-white/5 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-[9px] uppercase tracking-[0.2em] text-white/15">
-            Aditya (Techno Services)
+      <section className="relative z-10 overflow-hidden border-t border-white/10 bg-[#0a0a0a]">
+
+        {/* DECORATIVE CIRCLES */}
+
+        <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full border border-yellow-500/10" />
+
+        <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full border border-yellow-500/10" />
+
+        <div className="pointer-events-none absolute -bottom-40 left-10 h-80 w-80 rounded-full bg-yellow-500/[0.025] blur-[120px]" />
+
+
+        <div className="relative mx-auto max-w-7xl px-6 py-28 text-center sm:px-10 md:px-16 md:py-36">
+
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-500">
+            Pre-Registration
           </p>
 
-          <p className="text-[9px] uppercase tracking-[0.2em] text-white/10">
-            Your demand. Our next collection.
+          <h2 className="mx-auto mt-5 max-w-5xl font-stacksansnotch text-5xl font-medium leading-[1] tracking-tight sm:text-6xl md:text-8xl">
+
+            Your demand.
+            <br />
+
+            <span className="text-gray-600">
+              Our next collection.
+            </span>
+
+          </h2>
+
+          <p className="mx-auto mt-7 max-w-xl text-sm leading-7 text-gray-500">
+            Register your interest today. No payment. No purchase commitment.
+            Just tell us what you'd like to see next.
           </p>
+
+          <button
+            onClick={scrollToCollection}
+            className="group mt-9 inline-flex items-center gap-4 rounded-full bg-white px-7 py-4 text-xs font-bold uppercase tracking-[0.1em] text-black transition-all duration-300 hover:bg-yellow-400"
+          >
+
+            Explore Collection
+
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-black/10 text-lg transition-transform duration-300 group-hover:translate-x-1">
+              →
+            </span>
+
+          </button>
+
         </div>
-      </div>
+
+      </section>
+
+
+      {/* =====================================================
+          COLLABORATE
+      ====================================================== */}
+
+      <section className="relative z-10 border-t border-white/10 bg-black">
+
+        <Collaborate />
+
+      </section>
+
+
+      {/* =====================================================
+          FOOTER
+      ====================================================== */}
+
+      <footer className="relative z-10 border-t border-white/10 bg-black px-6 py-10 sm:px-10 md:px-16">
+
+        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 md:flex-row md:items-end">
+
+          {/* BRAND */}
+
+          <div>
+
+            <div className="flex items-center gap-3">
+
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-black">
+
+                <span className="text-[9px] font-bold">
+                  AE
+                </span>
+
+              </div>
+
+              <div>
+
+                <p className="text-xs font-semibold">
+                  Aditya Enterprises
+                </p>
+
+                <p className="text-[8px] uppercase tracking-[0.2em] text-gray-600">
+                  Techno Services
+                </p>
+
+              </div>
+
+            </div>
+
+            <p className="mt-4 text-[10px] text-gray-600">
+              Grow your dreams.
+            </p>
+
+          </div>
+
+
+          {/* RIGHT */}
+
+          <div className="md:text-right">
+
+            <p className="text-[9px] uppercase tracking-[0.2em] text-gray-700">
+              Upcoming Collection
+            </p>
+
+            <p className="mt-2 text-xs text-gray-500">
+              Watches & Wearable Technology
+            </p>
+
+          </div>
+
+        </div>
+
+      </footer>
+
     </main>
   );
 };
 
-export default PreRegisterForm;
+export default PreRegister;
