@@ -1,3 +1,4 @@
+```tsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
@@ -55,6 +56,12 @@ const PreRegister = () => {
     );
   };
 
+  const handleViewDetails = (productId: string) => {
+    navigate(
+      `/ProductDetails?product=${encodeURIComponent(productId)}`
+    );
+  };
+
   const scrollToCollection = () => {
     document
       .getElementById("collection")
@@ -68,8 +75,9 @@ const PreRegister = () => {
       ====================================================== */}
       <div className="pointer-events-none fixed inset-0 z-0">
         <div className="absolute left-[5%] top-[10%] h-[500px] w-[500px] rounded-full bg-[#7834c8]/15 blur-[180px]" />
+
         <div className="absolute right-[5%] top-[40%] h-[600px] w-[600px] rounded-full bg-[#7834c8]/10 blur-[200px]" />
-        
+
         {/* Premium Grid */}
         <div
           className="absolute inset-0 opacity-[0.03]"
@@ -100,8 +108,10 @@ const PreRegister = () => {
             <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[#7834c8]/50 bg-gradient-to-r from-[#7834c8]/20 to-transparent px-5 py-2.5 backdrop-blur-md">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-purple-400 opacity-75"></span>
+
                 <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-purple-300 shadow-[0_0_10px_#7834c8]"></span>
               </span>
+
               <span className="text-[11px] font-bold uppercase tracking-[0.35em] text-purple-200">
                 Upcoming Collection
               </span>
@@ -111,6 +121,7 @@ const PreRegister = () => {
             <h1 className="font-stacksansnotch text-[52px] font-extrabold leading-[1.05] tracking-tight text-white sm:text-[68px] md:text-[84px] lg:text-[100px]">
               Choose what
               <br />
+
               <span className="bg-gradient-to-br from-white via-white to-purple-500 bg-clip-text text-transparent">
                 comes next.
               </span>
@@ -130,13 +141,15 @@ const PreRegister = () => {
                 className="group inline-flex items-center gap-4 rounded-full bg-gradient-to-r from-[#7834c8] to-[#6127a3] px-9 py-4 text-xs font-bold uppercase tracking-[0.15em] text-white shadow-[0_10px_40px_rgba(120,52,200,.3)] transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_15px_60px_rgba(120,52,200,.5)] hover:ring-2 hover:ring-purple-400/50"
               >
                 Explore Collection
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-lg transition-transform duration-300 group-hover:translate-x-1.5 backdrop-blur-sm">
+
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-lg backdrop-blur-sm transition-transform duration-300 group-hover:translate-x-1.5">
                   →
                 </span>
               </button>
 
               <div className="flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-7 py-4 backdrop-blur-md">
                 <span className="h-2 w-2 rounded-full bg-purple-400 shadow-[0_0_10px_#7834c8]" />
+
                 <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-white/70">
                   No payment required
                 </span>
@@ -149,6 +162,7 @@ const PreRegister = () => {
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
                   Registration
                 </p>
+
                 <p className="mt-2 text-sm font-semibold text-white/90">
                   Free
                 </p>
@@ -158,6 +172,7 @@ const PreRegister = () => {
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
                   Payment
                 </p>
+
                 <p className="mt-2 text-sm font-semibold text-white/90">
                   Not Required
                 </p>
@@ -167,6 +182,7 @@ const PreRegister = () => {
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
                   Status
                 </p>
+
                 <p className="mt-2 text-sm font-bold text-purple-400 drop-shadow-[0_0_15px_rgba(120,52,200,0.5)]">
                   Coming Soon
                 </p>
@@ -186,6 +202,7 @@ const PreRegister = () => {
               <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-purple-400">
                 Your Demand
               </p>
+
               <p className="mt-5 text-base leading-relaxed text-white/60">
                 We want to know what you want before we decide what comes next.
               </p>
@@ -194,6 +211,7 @@ const PreRegister = () => {
             <h2 className="font-stacksansnotch text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-7xl">
               You choose.
               <br />
+
               <span className="text-white/30">We source.</span>
             </h2>
           </div>
@@ -203,17 +221,22 @@ const PreRegister = () => {
       {/* =====================================================
           COLLECTION
       ====================================================== */}
-      <section id="collection" className="relative z-10 px-6 py-24 sm:px-10 md:px-16 md:py-32">
+      <section
+        id="collection"
+        className="relative z-10 px-6 py-24 sm:px-10 md:px-16 md:py-32"
+      >
         <div className="mx-auto max-w-7xl">
           {/* HEADER */}
           <div className="mb-16 flex flex-col justify-between gap-8 md:flex-row md:items-end">
             <div>
               <div className="mb-5 flex items-center gap-4">
                 <div className="h-px w-10 bg-gradient-to-r from-[#7834c8] to-transparent" />
+
                 <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-purple-400">
                   What we're exploring
                 </p>
               </div>
+
               <h2 className="font-stacksansnotch text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
                 Upcoming Products
               </h2>
@@ -239,8 +262,10 @@ const PreRegister = () => {
                     alt={product.name}
                     className="absolute inset-0 h-full w-full object-cover opacity-60 transition-all duration-700 group-hover:scale-105 group-hover:opacity-40"
                   />
+
                   {/* Purple subtle overlay on hover */}
                   <div className="absolute inset-0 bg-[#7834c8]/0 transition-colors duration-500 group-hover:bg-[#7834c8]/20" />
+
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent" />
 
                   {/* NUMBER */}
@@ -262,7 +287,8 @@ const PreRegister = () => {
                     <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.25em] text-purple-400">
                       {product.category}
                     </p>
-                    <h3 className="font-stacksansnotch text-3xl font-bold leading-tight text-white sm:text-4xl drop-shadow-md">
+
+                    <h3 className="font-stacksansnotch text-3xl font-bold leading-tight text-white drop-shadow-md sm:text-4xl">
                       {product.name}
                     </h3>
                   </div>
@@ -273,25 +299,44 @@ const PreRegister = () => {
                   <p className="text-base font-semibold text-white/90">
                     {product.subtitle}
                   </p>
+
                   <p className="mt-3 text-sm leading-relaxed text-white/60">
                     {product.description}
                   </p>
 
                   {/* FOOTER */}
-                  <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-6">
+                  <div className="mt-8 flex flex-col gap-5 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+                    {/* LABEL */}
                     <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
                       Register your interest
                     </span>
 
-                    <button
-                      onClick={() => handleRegister(product.name)}
-                      className="group/button inline-flex items-center gap-3 rounded-full bg-white px-6 py-3.5 text-[10px] font-bold uppercase tracking-[0.15em] text-black transition-all duration-300 hover:bg-gradient-to-r hover:from-[#7834c8] hover:to-[#6127a3] hover:text-white hover:shadow-[0_0_20px_rgba(120,52,200,0.4)] hover:ring-2 hover:ring-purple-400/50"
-                    >
-                      Register
-                      <span className="text-base transition-transform duration-300 group-hover/button:translate-x-1.5">
-                        →
-                      </span>
-                    </button>
+                    {/* ACTION BUTTONS */}
+                    <div className="flex items-center gap-3">
+                      {/* VIEW DETAILS */}
+                      <button
+                        onClick={() => handleViewDetails(product.id)}
+                        className="group/button inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3.5 text-[10px] font-bold uppercase tracking-[0.15em] text-white/80 backdrop-blur-md transition-all duration-300 hover:border-purple-400/40 hover:bg-purple-500/10 hover:text-white"
+                      >
+                        View Details
+
+                        <span className="text-sm transition-transform duration-300 group-hover/button:translate-x-1">
+                          →
+                        </span>
+                      </button>
+
+                      {/* REGISTER */}
+                      <button
+                        onClick={() => handleRegister(product.name)}
+                        className="group/button inline-flex items-center gap-3 rounded-full bg-white px-6 py-3.5 text-[10px] font-bold uppercase tracking-[0.15em] text-black transition-all duration-300 hover:bg-gradient-to-r hover:from-[#7834c8] hover:to-[#6127a3] hover:text-white hover:shadow-[0_0_20px_rgba(120,52,200,0.4)] hover:ring-2 hover:ring-purple-400/50"
+                      >
+                        Register
+
+                        <span className="text-base transition-transform duration-300 group-hover/button:translate-x-1.5">
+                          →
+                        </span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </article>
@@ -303,21 +348,26 @@ const PreRegister = () => {
       {/* =====================================================
           HOW IT WORKS
       ====================================================== */}
-      <section className="relative z-10 bg-black/40 backdrop-blur-2xl px-6 py-24 sm:px-10 md:px-16 md:py-32 border-y border-white/[0.05]">
+      <section className="relative z-10 border-y border-white/[0.05] bg-black/40 px-6 py-24 backdrop-blur-2xl sm:px-10 md:px-16 md:py-32">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-16 md:grid-cols-[0.85fr_1.15fr]">
             {/* LEFT */}
             <div>
               <div className="flex items-center gap-4">
                 <div className="h-px w-10 bg-gradient-to-r from-[#7834c8] to-transparent" />
+
                 <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-purple-400">
                   Simple Process
                 </p>
               </div>
+
               <h2 className="mt-6 font-stacksansnotch text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
                 Tell us.
                 <br />
-                <span className="text-white/40">We'll take it from there.</span>
+
+                <span className="text-white/40">
+                  We'll take it from there.
+                </span>
               </h2>
             </div>
 
@@ -347,15 +397,17 @@ const PreRegister = () => {
               ].map((step) => (
                 <div
                   key={step.number}
-                  className="group grid grid-cols-[50px_1fr] gap-6 py-8 transition-colors hover:bg-white/[0.02] -mx-6 px-6 rounded-2xl"
+                  className="-mx-6 grid grid-cols-[50px_1fr] gap-6 rounded-2xl px-6 py-8 transition-colors hover:bg-white/[0.02]"
                 >
                   <span className="text-sm font-extrabold text-purple-400 drop-shadow-[0_0_10px_rgba(120,52,200,0.5)]">
                     {step.number}
                   </span>
+
                   <div>
                     <h3 className="text-lg font-bold text-white">
                       {step.title}
                     </h3>
+
                     <p className="mt-2.5 max-w-lg text-base leading-relaxed text-white/50 transition-colors duration-300 group-hover:text-white/80">
                       {step.text}
                     </p>
@@ -373,6 +425,7 @@ const PreRegister = () => {
       <section className="relative z-10 overflow-hidden bg-[#050505]">
         {/* DECORATIVE GLOWS */}
         <div className="pointer-events-none absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full border border-[#7834c8]/20 bg-[#7834c8]/5 blur-3xl" />
+
         <div className="pointer-events-none absolute -bottom-40 left-10 h-[600px] w-[600px] rounded-full bg-[#7834c8]/10 blur-[150px]" />
 
         <div className="relative mx-auto max-w-7xl px-6 py-32 text-center sm:px-10 md:px-16 md:py-48">
@@ -383,6 +436,7 @@ const PreRegister = () => {
           <h2 className="mx-auto mt-6 max-w-5xl font-stacksansnotch text-5xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-8xl">
             Your demand.
             <br />
+
             <span className="bg-gradient-to-br from-white/40 to-white/10 bg-clip-text text-transparent">
               Our next collection.
             </span>
@@ -398,7 +452,8 @@ const PreRegister = () => {
             className="group mt-12 inline-flex items-center gap-4 rounded-full bg-gradient-to-r from-[#7834c8] to-[#6127a3] px-9 py-4 text-xs font-bold uppercase tracking-[0.15em] text-white shadow-[0_10px_40px_rgba(120,52,200,.3)] transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_15px_60px_rgba(120,52,200,.5)] hover:ring-2 hover:ring-purple-400/50"
           >
             Explore Collection
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-lg transition-transform duration-300 group-hover:translate-x-1.5 backdrop-blur-sm">
+
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-lg backdrop-blur-sm transition-transform duration-300 group-hover:translate-x-1.5">
               →
             </span>
           </button>
@@ -425,15 +480,18 @@ const PreRegister = () => {
                   AE
                 </span>
               </div>
+
               <div>
                 <p className="text-sm font-bold text-white">
                   Aditya Enterprises
                 </p>
+
                 <p className="text-[9px] font-bold uppercase tracking-[0.25em] text-white/50">
                   Techno Services
                 </p>
               </div>
             </div>
+
             <p className="mt-5 text-[11px] font-medium text-white/40">
               Grow your dreams.
             </p>
@@ -444,6 +502,7 @@ const PreRegister = () => {
             <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/40">
               Upcoming Collection
             </p>
+
             <p className="mt-2.5 text-sm font-semibold text-white/80">
               Watches & Wearable Technology
             </p>
@@ -455,3 +514,29 @@ const PreRegister = () => {
 };
 
 export default PreRegister;
+```
+
+### One thing you need to add
+
+This code assumes you have a route like:
+
+```tsx
+<Route path="/ProductDetails" element={<ProductDetails />} />
+```
+
+because the new **View Details** button navigates to:
+
+```text
+/ProductDetails?product=analog-watch
+/ProductDetails?product=smart-watch
+/ProductDetails?product=smart-band
+/ProductDetails?product=smart-ring
+```
+
+So the flow becomes:
+
+**Upcoming Product → View Details → Product Details → Register Your Interest**
+
+while the existing **Register** button continues directly to your `PreRegisterForm`. Your original registration navigation is preserved.
+
+If you want, I can also give you the **complete `ProductDetails.tsx` + route code**, so clicking **View Details** actually opens a premium product page for each watch/band/ring.
