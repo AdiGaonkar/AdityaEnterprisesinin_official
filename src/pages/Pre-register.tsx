@@ -12,7 +12,7 @@ const products = [
     description:
       "Explore our upcoming selection of analog watches designed for everyday wear, professional settings, and timeless style.",
     image:
-      "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=1400&q=85",
+      "https://pin.it/6IGhclBiW",
   },
   {
     id: "smart-watch",
@@ -22,7 +22,7 @@ const products = [
     description:
       "Discover upcoming smart watches combining connectivity, activity tracking, productivity, and everyday convenience.",
     image:
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1400&q=85",
+      "https://pin.it/4WOy5B5vo",
   },
   {
     id: "smart-band",
@@ -32,7 +32,7 @@ const products = [
     description:
       "Lightweight wearable technology designed for activity tracking, fitness, and everyday movement.",
     image:
-      "https://images.unsplash.com/photo-1557935728-e6d1eaabe558?auto=format&fit=crop&w=1400&q=85",
+      "https://pin.it/6n62JKPJd",
   },
   {
     id: "smart-ring",
@@ -42,7 +42,7 @@ const products = [
     description:
       "Compact wearable technology designed to bring smart features into your everyday life without the bulk.",
     image:
-      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1400&q=85",
+      "https://pin.it/WRGTL2Vo3",
   },
 ];
 
@@ -159,7 +159,7 @@ const PreRegister = () => {
             {/* HERO INFO */}
             <div className="mt-20 flex flex-wrap gap-x-14 gap-y-8 border-t border-white/10 pt-8">
               <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
                   Registration
                 </p>
 
