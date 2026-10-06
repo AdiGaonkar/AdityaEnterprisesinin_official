@@ -12,7 +12,7 @@ const products = [
     description:
       "Explore our upcoming selection of analog watches designed for everyday wear, professional settings, and timeless style.",
     image:
-      "https://pin.it/6IGhclBiW",
+      "https://pin.it/1lVzwuTcH",
   },
   {
     id: "smart-watch",
