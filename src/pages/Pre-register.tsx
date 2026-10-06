@@ -12,7 +12,7 @@ const products = [
     description:
       "Explore our upcoming selection of analog watches designed for everyday wear, professional settings, and timeless style.",
     image:
-      "https://pin.it/1lVzwuTcH",
+      "https://carltonlondonbeauty.com/products/clrlm-001?srsltid=AU7gw4XFLqId462m1i3BYduANxPT0ZXUCVa-F9AxRjHnpQwtSTcCzuRj",
   },
   {
     id: "smart-watch",
@@ -22,7 +22,7 @@ const products = [
     description:
       "Discover upcoming smart watches combining connectivity, activity tracking, productivity, and everyday convenience.",
     image:
-      "https://pin.it/4WOy5B5vo",
+      "https://www.apple.com/in/newsroom/2021/09/apple-reveals-apple-watch-series-7-featuring-the-largest-most-advanced-display/",
   },
   {
     id: "smart-band",
@@ -32,7 +32,7 @@ const products = [
     description:
       "Lightweight wearable technology designed for activity tracking, fitness, and everyday movement.",
     image:
-      "https://pin.it/6n62JKPJd",
+      "https://www.amazon.in/Bracelet-Fitness-Tracker-Monitor-Android/dp/B0GRZJMZDV",
   },
   {
     id: "smart-ring",
@@ -42,7 +42,7 @@ const products = [
     description:
       "Compact wearable technology designed to bring smart features into your everyday life without the bulk.",
     image:
-      "https://pin.it/WRGTL2Vo3",
+      "https://ringconn.com/fr/blogs/nouvelles/smart-ring-real-value-and-purpose",
   },
 ];
 
