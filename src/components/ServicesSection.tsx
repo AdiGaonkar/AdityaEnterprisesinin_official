@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Collaborate from "@/components/Collaborate";
 import Navbar from "./Navbar";
+import { ChevronRight } from "lucide-react";
 
 type ElectronicsTab = "color" | "industrial";
 type ITTab = "web" | "app" | "design" | "hosting" | "marketing";
@@ -305,13 +306,29 @@ export default function ServicesSection() {
               Complete technology solutions for every requirement
             </p>
           </div>
+
+          {/* Scroll Down Indicator */}
+          <button
+            type="button"
+            onClick={() =>
+              document.getElementById("services-content")?.scrollIntoView({
+                behavior: "smooth",
+              })
+            }
+            aria-label="Scroll down to explore services"
+            className="mt-16 flex flex-col items-center gap-2 text-white/80 hover:text-white transition cursor-pointer animate-bounce"
+          >
+            <span className="text-[10px] uppercase tracking-[0.3em]">
+              Scroll to explore
+            </span>
+            <ChevronRight className="h-6 w-6 rotate-90" />
+          </button>
         </div>
 
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-36 bg-gradient-to-b from-transparent via-black/40 to-black" />
       </section>
 
-      <div className="bg-black text-white">
-
+      <div id="services-content" className="bg-black text-white scroll-mt-6">
         {/* INTRO */}
         <section className="mx-auto max-w-6xl px-6 pt-16 pb-16 md:pt-24">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm">
@@ -335,7 +352,6 @@ export default function ServicesSection() {
         {/* ========================================================= */}
 
         <section className="mx-auto max-w-6xl px-6 py-16 md:py-24">
-
           <div className="mb-10">
             <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#b6b6b6]">
               01
@@ -427,7 +443,6 @@ export default function ServicesSection() {
         {/* ========================================================= */}
 
         <section className="mx-auto max-w-6xl px-6 py-16 md:py-24">
-
           <div className="mb-10">
             <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#b6b6b6]">
               02
