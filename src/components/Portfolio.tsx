@@ -1057,6 +1057,23 @@ const PortfolioPage = () => {
               Products
             </h1>
 
+            {/* Scroll Down Indicator */}
+            <button
+              type="button"
+              onClick={() =>
+                document.getElementById("portfolio-content")?.scrollIntoView({
+                  behavior: "smooth",
+                })
+              }
+              aria-label="Scroll down to explore products"
+              className="mt-8 flex flex-col items-center gap-2 text-white/80 hover:text-white transition cursor-pointer animate-bounce"
+            >
+              <span className="text-[10px] uppercase tracking-[0.3em]">
+                Scroll to explore
+              </span>
+              <ChevronRight className="h-6 w-6 rotate-90" />
+            </button>
+
             <div className="mx-auto mt-12 w-full max-w-xl text-center">
 
               <div className="h-px w-full bg-white/35" />
@@ -1081,7 +1098,7 @@ const PortfolioPage = () => {
             CONTENT
         ====================================================== */}
 
-        <section className="bg-black">
+        <section id="portfolio-content" className="bg-black scroll-mt-6">
 
           <div className="mx-auto max-w-7xl px-6 py-20">
 
