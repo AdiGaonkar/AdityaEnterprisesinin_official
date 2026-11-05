@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Collaborateforaboutpage from "@/pages/Collaborateforaboutpage";
 import Navbar from "./Navbar";
 import Collaborate from "./Collaborate";
+import { ChevronRight } from "lucide-react";
 
 type CardProps = {
   title: string;
@@ -49,7 +50,6 @@ const AboutMindMap: React.FC = () => {
             AboutUs
           </h1>
 
-
           <div className="mx-auto mt-12 w-full max-w-xl text-center">
             <div className="h-px w-full bg-white/35" />
             <p className="mt-5 text-[10px] uppercase tracking-[0.28em] text-white/80">
@@ -59,6 +59,23 @@ const AboutMindMap: React.FC = () => {
               Who We Are & What We Do
             </p>
           </div>
+
+          {/* Scroll Down Indicator */}
+          <button
+            type="button"
+            onClick={() =>
+              document.getElementById("about")?.scrollIntoView({
+                behavior: "smooth",
+              })
+            }
+            aria-label="Scroll down to explore about section"
+            className="mt-16 flex flex-col items-center gap-2 text-white/80 hover:text-white transition cursor-pointer animate-bounce"
+          >
+            <span className="text-[10px] uppercase tracking-[0.3em]">
+              Scroll to explore
+            </span>
+            <ChevronRight className="h-6 w-6 rotate-90" />
+          </button>
         </div>
 
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-36 bg-gradient-to-b from-transparent via-black/40 to-black" />
@@ -67,7 +84,7 @@ const AboutMindMap: React.FC = () => {
       {/* ✅ MAIN ABOUT SECTION (VERTICAL ABOUT US REMOVED) */}
       <section
         id="about"
-        className="relative min-h-screen w-full overflow-hidden bg-black"
+        className="relative min-h-screen w-full overflow-hidden bg-black scroll-mt-6"
       >
         <motion.div
           style={{ y }}
@@ -81,18 +98,12 @@ const AboutMindMap: React.FC = () => {
           <Card
             title="WHO WE ARE?"
             align="right"
-            text="
-
-Aditya Enterprises is a technology solutions company providing reliable electronic products, industrial technology, and professional IT & digital services to businesses and individuals.
-"
+            text="Aditya Enterprises is a technology solutions company providing reliable electronic products, industrial technology, and professional IT & digital services to businesses and individuals."
           />
 
           <Card
             title="WHAT WE DO?"
-            text="
-
-We provide reliable electronic and industrial technology products along with professional IT and digital services, helping businesses find the right solutions to build, operate, and grow.
-"
+            text="We provide reliable electronic and industrial technology products along with professional IT and digital services, helping businesses find the right solutions to build, operate, and grow."
           />
 
           <Card
